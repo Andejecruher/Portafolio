@@ -29,6 +29,7 @@ export function Footer() {
         target='_blank'
         rel='noreferrer'
         className={classes.linkSocial}
+        aria-label={link.label} // Añadir atributo aria-label para accesibilidad
       >
         {link.icon}
       </a>
@@ -41,23 +42,23 @@ export function Footer() {
         <div className={classes.logo}>
           <div className={classes.content}>
             <div className={classes.contentLogo}>
-              <img src={Logo} alt="Logo" />
+              <img src={Logo} alt="Logo Andejecruher" />
               <p className={classes.nameLogo}>Andejecruher</p>
             </div>
             <a className={classes.correo} href='mailto:andejecruher@gmail.com'>andejecruher@gmail.com</a>
           </div>
           <p className={classes.leyend}>Desarrollador Full Stack</p>
         </div>
-        <Group className={classes.links}>
+        <nav className={classes.links}>
           <div className={classes.contentSocial}>
             <p>Media</p>
             <div className={classes.social}>{itemsSocial}</div>
           </div>
-        </Group>
+        </nav>
       </Container>
-      <Container className={classes.copy}>
+      <div className={classes.copy}>
         <p>© {new Date().getFullYear()} Andejecruher. Todos los derechos reservados.</p>
-      </Container>
+      </div>
     </footer>
   );
 }

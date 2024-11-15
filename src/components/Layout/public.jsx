@@ -10,7 +10,9 @@ function Public() {
     <>
       <Container size="md">
         <HeaderMenu />
-        <Outlet />
+        <main>
+          <Outlet />
+        </main>
       </Container>
       <Footer />
     </>

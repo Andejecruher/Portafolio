@@ -67,36 +67,42 @@ export function HeaderMenu() {
   return (
     <header className={classes.header}>
       <section className={classes.inner}>
-        <div className={classes.spacer} >
+        <div className={classes.spacer}>
           <img src={Logo} alt="logo Andejecruher" className={classes.logo} />
           <p className={classes.title}>Andejecruher</p>
         </div>
 
-        <Group gap={5} visibleFrom="sm">
-          {items}
-        </Group>
-        <Burger opened={opened} onClick={open} size="md" hiddenFrom="sm" />
+        <nav>
+          <Group gap={5} visibleFrom="sm">
+            {items}
+          </Group>
+        </nav>
+        <Burger opened={opened} onClick={open} size="md" hiddenFrom="sm" aria-label="Open menu" />
         <Drawer opened={opened} onClose={close} title={
-          <div className={classes.spacer} >
+          <div className={classes.spacer}>
             <img src={Logo} alt="logo Andejecruher" className={classes.logo} />
             <p className={classes.title}>Andejecruher</p>
           </div>
         }>
           {/* Drawer content */}
-          <Stack
-            className={classes.Stack}
-            bg="var(--mantine-color-body)"
-            align="flex-start"
-            justify="flex-start"
-            gap="md"
-          >
-            {items}
-          </Stack>
-          <Group justify="center" gap={12} className={classes.itemsSocial}>
-            {itemsSocial}
-          </Group>
+          <div className={classes.drawerContent}>
+            <div className={classes.drawerInner}>
+              <Stack
+                className={classes.stack}
+                bg="var(--mantine-color-body)"
+                align="center" // Centrar horizontalmente
+                justify="center" // Centrar verticalmente
+                gap="md"
+              >
+                {items}
+              </Stack>
+              <Group justify="center" gap={12} className={classes.itemsSocial}>
+                {itemsSocial}
+              </Group>
+            </div>
+          </div>
         </Drawer>
       </section>
-    </header >
+    </header>
   );
 }

@@ -1,6 +1,6 @@
 import './index.css';
 import '@mantine/core/styles.css';
-import './app.css';
+import '@src/styles/app.css';
 
 import { MantineProvider } from '@mantine/core';
 import { RouterProvider } from "react-router-dom";

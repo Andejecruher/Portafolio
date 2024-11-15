@@ -49,10 +49,6 @@
   height: 54px;
 }
 
-.itemsSocial {
-  margin-top: 102px;
-}
-
 .spacer {
   display: flex;
   align-items: center;
@@ -83,6 +79,24 @@ a > .almohadilla {
   }
 }
 
-.Stack {
-  margin-top: 25px;
+.drawerContent {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+}
+
+.drawerInner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Espacio entre el Stack y el Group */
+  position: relative;
+}
+
+.stack {
+  margin-top: 55px;
+  display: flex;
+  align-items: flex-start; /* Centrar horizontalmente */
+  justify-content: flex-start; /* Alinear a la izquierda */
+  flex: 1;
 }

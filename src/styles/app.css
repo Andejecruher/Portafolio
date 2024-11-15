@@ -1,0 +1,73 @@
+/* For light mode */
+:root[data-mantine-color-scheme='light'] body {
+  --mantine-color-body: #ffffff;
+}
+
+/* For dark mode */
+:root[data-mantine-color-scheme='dark'] body {
+  --mantine-color-body: #282c33;
+}
+
+#error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.fira-code-normal {
+  font-family: 'Fira Code', monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fira-code-italic {
+  font-family: 'Fira Code', monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.fira-code-bold {
+  font-family: 'Fira Code', monospace;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.fira-code-bold-italic {
+  font-family: 'Fira Code', monospace;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.fira-code-light {
+  font-family: 'Fira Code', monospace;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.fira-code-light-italic {
+  font-family: 'Fira Code', monospace;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.fira-code-extra-light {
+  font-family: 'Fira Code', monospace;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.fira-code-extra-light-italic {
+  font-family: 'Fira Code', monospace;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: italic;
+}
