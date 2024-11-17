@@ -1,0 +1,202 @@
+.inner {
+  display: flex;
+  justify-content: space-between;
+  padding-top: calc(var(--mantine-spacing-sm) * 4);
+  padding-bottom: calc(var(--mantine-spacing-sm) * 4);
+  gap: 20;
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    flex-direction: column;
+    align-items: center;
+    padding-top: calc(var(--mantine-spacing-sm));
+    padding-bottom: calc(var(--mantine-spacing-sm));
+  }
+}
+
+.content {
+  max-width: rem(480px);
+  margin-right: calc(var(--mantine-spacing-sm) * 3);
+
+  @media (max-width: $mantine-breakpoint-md) {
+    max-width: 100%;
+    margin-right: 0;
+  }
+}
+
+.title {
+  color: light-dark(#000, var(--mantine-color-white));
+  font-family: 'Fira Code, monospace';
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  @media (max-width: $mantine-breakpoint-xs) {
+    font-size: rem(22px);
+  }
+}
+
+.text {
+  color: light-dark(#000, var(--mantine-color-black));
+  font-family: 'Fira Code';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px; /* 156.25% */
+  margin-top: calc(var(--mantine-spacing-md));
+  margin-bottom: calc(var(--mantine-spacing-md));
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    margin-top: calc(var(--mantine-spacing-sm));
+    margin-bottom: calc(var(--mantine-spacing-sm));
+  }
+}
+
+.control {
+  @media (max-width: $mantine-breakpoint-xs) {
+    flex: 1;
+  }
+}
+
+.cube {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border: 1px solid var(--primary, #c778dd);
+  background: var(--primary, #c778dd);
+}
+
+.actualities {
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  gap: 10px;
+  color: light-dark(#000, var(--mantine-color-gray));
+  font-family: 'Fira Code';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: 1px solid var(--gray, #abb2bf);
+  background: light-dark(transparent, transparent);
+}
+
+.actualities span {
+  color: light-dark(#000, #fff);
+  font-family: 'Fira Code';
+  font-size: 18px;
+  font-style: bold;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.highlight {
+  color: var(--primary, #c778dd);
+  font-family: 'Fira Code';
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  @media (max-width: $mantine-breakpoint-xs) {
+    font-size: rem(20px);
+  }
+}
+
+.highlight {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 24.5ch;
+  border-right: 2px solid rgba(0, 0, 0, 0.87);
+  animation:
+    animacionIntro 2.8s steps(24, end),
+    animacionBar 1s step-end infinite;
+}
+
+.contentImages {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.image {
+  width: rem(250px);
+  height: rem(356px);
+  @media (max-width: $mantine-breakpoint-md) {
+    margin-top: 10px;
+    width: rem(200px);
+    height: rem(284px);
+  }
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    width: rem(150px);
+    height: rem(284px);
+  }
+}
+
+.dots {
+  position: absolute;
+  width: 84px;
+  height: 84px;
+  flex-shrink: 0;
+  bottom: 80px;
+  right: 0;
+
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    bottom: 70px;
+    right: 0;
+    width: 84px;
+    height: 84px;
+  }
+
+  @media screen and (max-width: $mantine-breakpoint-xs) {
+    bottom: 65px;
+    right: 10px;
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.vector {
+  position: absolute;
+  width: 155px;
+  height: 155px;
+  top: 95px;
+  left: 0;
+  z-index: -1;
+
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    top: 85px;
+    left: 0;
+    width: 135px;
+    height: 135px;
+  }
+
+  @media screen and (max-width: $mantine-breakpoint-xs) {
+    top: 75px;
+    left: 10px;
+    width: 125px;
+    height: 125px;
+  }
+}
+
+@keyframes animacionIntro {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 24.5ch;
+  }
+}
+
+@keyframes animacionBar {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: light-dark(
+      var(--mantine-color-white),
+      var(--mantine-color-black)
+    );
+  }
+}

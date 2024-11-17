@@ -1,0 +1,162 @@
+.skills {
+  margin-top: 106px;
+  margin-bottom: 112px;
+}
+.title {
+  color: light-dark(#000, var(--mantine-color-white));
+  font-family: 'Fira Code';
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    font-size: 24px;
+  }
+  @media screen and (max-width: $mantine-breakpoint-sm) {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.open {
+  color: light-dark(#000, var(--mantine-color-white));
+  font-family: 'Fira Code';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+  @media screen and (max-width: $mantine-breakpoint-sm) {
+    font-size: 14px;
+  }
+}
+
+.line {
+  height: 1px;
+  flex: 1 0 0;
+  background-color: #c778dd;
+  margin-top: 5px;
+  margin-right: 510px;
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+}
+
+.card {
+  border: 1px solid var(--gray, #abb2bf);
+}
+
+.cardTitle {
+  display: flex;
+  padding: 8px 8px;
+  justify-content: flex-start;
+  color: light-dark(#000, var(--mantine-color-white));
+  font-family: 'Fira Code';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border-bottom: 1px solid var(--gray, #abb2bf);
+}
+
+.cardText {
+  color: light-dark(#000, var(--mantine-color-black));
+  font-family: 'Fira Code';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.decorations {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+.dotsTop {
+  position: absolute;
+  display: flex;
+  width: 63px;
+  height: 63px;
+  flex-shrink: 0;
+  left: 32px;
+  top: 0px;
+  @media screen and (max-width: $mantine-breakpoint-sm) {
+    left: 32px;
+    top: 0px;
+  }
+}
+
+.cubeTop {
+  position: absolute;
+  width: 86px;
+  height: 86px;
+  flex-shrink: 0;
+  border: 1px solid var(--gray, #abb2bf);
+  right: 95px;
+  top: 0;
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    right: 40px;
+    top: 0;
+  }
+  @media screen and (max-width: $mantine-breakpoint-sm) {
+    right: 40px;
+    top: 0;
+  }
+}
+
+.logo {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
+  left: 10px;
+  bottom: 0;
+}
+
+.dotsBottom {
+  position: absolute;
+  display: flex;
+  width: 63px;
+  height: 63px;
+  flex-shrink: 0;
+  top: 120px;
+  right: 220px;
+
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    top: 120px;
+    right: 120px;
+  }
+
+  @media screen and (max-width: $mantine-breakpoint-sm) {
+    top: 120px;
+    right: 80px;
+  }
+}
+
+.cubeBottom {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border: 1px solid var(--gray, #abb2bf);
+  right: 40px;
+  bottom: 45px;
+
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    right: 40px;
+    bottom: 45px;
+  }
+
+  @media screen and (max-width: $mantine-breakpoint-sm) {
+    right: 40px;
+    bottom: 45px;
+  }
+}

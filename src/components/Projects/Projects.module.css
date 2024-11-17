@@ -1,0 +1,71 @@
+.projects {
+  position: relative;
+}
+.title {
+  color: light-dark(#000, var(--mantine-color-white));
+  font-family: 'Fira Code';
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    font-size: 24px;
+  }
+  @media screen and (max-width: $mantine-breakpoint-sm) {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.open {
+  color: light-dark(#000, var(--mantine-color-white));
+  font-family: 'Fira Code';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+  @media screen and (max-width: $mantine-breakpoint-sm) {
+    font-size: 14px;
+  }
+}
+
+.line {
+  height: 1px;
+  flex: 1 0 0;
+  background-color: #c778dd;
+  margin-top: 5px;
+  margin-right: 210px;
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+}
+
+.cube {
+  width: 60px;
+  height: 155px;
+  flex-shrink: 0;
+  border: 1px solid var(--gray, #abb2bf);
+  position: absolute;
+  right: 0;
+  bottom: 200px;
+  z-index: inherit;
+
+  @media screen and (max-width: $mantine-breakpoint-lg) {
+    width: 50px;
+  }
+
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    display: none;
+  }
+}
+
+.dots {
+  position: absolute;
+  width: 84px;
+  height: 84px;
+  flex-shrink: 0;
+  top: 80px;
+  left: -35px;
+}

@@ -1,7 +1,8 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import Public from "@src/components/Layout/public";
 import ErrorPage from "@src/pages/Error/Error";
-import NotFoundPage from "../pages/Error/404";
+import NotFoundPage from "@src/pages/Error/404";
+import HomePage from "@src/pages/Home/Home";
 
 
 const router = createBrowserRouter(
@@ -22,7 +23,7 @@ const router = createBrowserRouter(
         },
         {
           path: "/home",
-          element: <div>Home</div>,
+          element: <HomePage />,
         },
         {
           path: "/about",

@@ -5,6 +5,8 @@
   margin-bottom: 6px;
   @media (max-width: $mantine-breakpoint-sm) {
     margin-top: 16px;
+    height: rem(48px);
+    margin-bottom: 0px;
   }
 }
 
@@ -20,7 +22,7 @@
   padding: rem(8px) rem(12px);
   border-radius: var(--mantine-radius-sm);
   text-decoration: none;
-  color: #abb2bf;
+  color: light-dark(#000, var(--mantine-color-gray));
   font-size: 16px;
   font-weight: 500;
 
@@ -31,17 +33,23 @@
     );
   }
 
-  @media (max-width: $mantine-breakpoint-sm) {
+  @media (max-width: 767px) {
     font-size: 32px;
   }
 }
 
+.linkSocial {
+  color: light-dark(#000, #abb2bf); /* El color que desees para el enlace */
+  text-decoration: none;
+}
+
+.linkSocial:hover {
+  color: #a050bb; /* Color al pasar el cursor */
+}
+
 .selected {
-  color: white;
-  background-color: light-dark(
-    var(--mantine-color-primary),
-    var(--mantine-color-primary-dark)
-  );
+  color: light-dark(var(--mantine-color-white), #fff);
+  background-color: light-dark(var(--mantine-color-gray-0), transparent);
 }
 
 .linkSocial > svg {
@@ -65,7 +73,7 @@
   font-family: 'Fira Code';
   font-weight: 700;
   word-wrap: break-word;
-  color: white;
+  color: light-dark(#000, var(--mantine-color-white));
 }
 
 a > .almohadilla {
@@ -74,7 +82,7 @@ a > .almohadilla {
   font-family: 'Fira Code';
   font-weight: 500;
   word-wrap: break-word;
-  @media (max-width: $mantine-breakpoint-sm) {
+  @media (max-width: 767px) {
     font-size: 32px;
   }
 }

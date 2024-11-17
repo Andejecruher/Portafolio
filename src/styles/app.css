@@ -14,60 +14,81 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 100vh;
 }
 
-.fira-code-normal {
-  font-family: 'Fira Code', monospace;
-  font-optical-sizing: auto;
+.almohadilla {
+  color: #c778dd;
+  font-size: 32px;
+  font-family: 'Fira Code';
+  font-weight: 500;
+  word-wrap: break-word;
+  @media (max-width: 767px) {
+    font-size: 32px;
+  }
+}
+
+button:hover {
+  background-color: rgba(
+    199,
+    120,
+    221,
+    0.5
+  ) !important; /* Color con opacidad */
+}
+
+.card-tecnology {
+  color: light-dark(#000, var(--mantine-color-black));
+  display: flex;
+  padding: 8px;
+  align-items: flex-start;
+  gap: 8px;
+  align-self: stretch;
+  border: 1px solid var(--gray, #abb2bf);
+  border-left: none;
+  border-right: none;
+  background: transparent;
+}
+
+.card-content {
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+.card-title {
+  color: light-dark(#000, var(--mantine-color-white));
+  font-family: 'Fira Code';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.card-text {
+  color: light-dark(#000, var(--mantine-color-white));
+  font-family: 'Fira Code';
+  font-size: 16px;
+  font-style: normal;
   font-weight: 400;
-  font-style: normal;
+  line-height: normal;
+  text-align: left;
 }
 
-.fira-code-italic {
-  font-family: 'Fira Code', monospace;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: italic;
+.card-buttons {
+  padding: 16px;
 }
 
-.fira-code-bold {
-  font-family: 'Fira Code', monospace;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
+.card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.fira-code-bold-italic {
-  font-family: 'Fira Code', monospace;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: italic;
-}
-
-.fira-code-light {
-  font-family: 'Fira Code', monospace;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.fira-code-light-italic {
-  font-family: 'Fira Code', monospace;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.fira-code-extra-light {
-  font-family: 'Fira Code', monospace;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-}
-
-.fira-code-extra-light-italic {
-  font-family: 'Fira Code', monospace;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: italic;
+.card-buttons {
+  margin-top: auto;
 }

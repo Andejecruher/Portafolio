@@ -1,14 +1,13 @@
 .footer {
   border-top: rem(1px) solid #abb2bf;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 .inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: var(--mantine-spacing-xl);
-  padding-bottom: var(--mantine-spacing-xl);
-
   @media (max-width: $mantine-breakpoint-xs) {
     flex-direction: column;
   }
@@ -42,7 +41,7 @@
 }
 
 .nameLogo {
-  color: var(--white, #fff);
+  color: light-dark(#000, var(--mantine-color-white));
   font-family: 'Fira Code';
   font-size: 16px;
   font-style: normal;
@@ -52,7 +51,7 @@
 
 .correo {
   margin-left: var(--mantine-spacing-md);
-  color: #abb2bf;
+  color: light-dark(#000, var(--mantine-color-black));
   font-family: 'Fira Code';
   font-size: 16px;
   font-style: normal;
@@ -63,7 +62,7 @@
 }
 
 .leyend {
-  color: var(--white, #fff);
+  color: light-dark(#000, var(--mantine-color-white));
   font-family: 'Fira Code';
   font-size: 16px;
   font-style: normal;
@@ -74,7 +73,7 @@
 }
 
 .contentSocial p {
-  color: var(--white, #fff);
+  color: light-dark(#000, var(--mantine-color-white));
   font-family: 'Fira Code';
   font-size: 24px;
   font-style: normal;
@@ -98,13 +97,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--gray, #abb2bf);
+  color: light-dark(#000, var(--mantine-color-black));
   font-family: 'Fira Code';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin-top: 48px;
   @media screen and (max-width: 580px) {
     text-align: center;
   }
+}
+
+.linkSocial {
+  color: light-dark(#000, #abb2bf); /* El color que desees para el enlace */
+  text-decoration: none;
+}
+
+.linkSocial:hover {
+  color: #a050bb; /* Color al pasar el cursor */
 }
