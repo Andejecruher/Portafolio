@@ -1,5 +1,7 @@
-.AboutMe {
+.contact {
   position: relative;
+  margin-top: 90px;
+  margin-bottom: 90px;
 }
 .title {
   color: light-dark(#000, var(--mantine-color-white));
@@ -35,7 +37,7 @@
   flex: 1 0 0;
   background-color: #c778dd;
   margin-top: 5px;
-  margin-right: 310px;
+  margin-right: 510px;
   @media screen and (max-width: $mantine-breakpoint-md) {
     margin-right: 0px;
     margin-left: 0px;
@@ -45,64 +47,61 @@
 .dots {
   position: absolute;
   display: flex;
-  width: 103px;
+  width: 80px;
   height: 103px;
-  bottom: 150px;
-  right: 0px;
-  @media screen and (max-width: $mantine-breakpoint-md) {
-    display: none;
-  }
-}
-
-.avatarImg {
-  width: 100%;
-  height: 450px;
-  @media screen and (max-width: $mantine-breakpoint-md) {
-    height: 400px;
-    width: 100%;
-  }
-  @media screen and (max-width: $mantine-breakpoint-xs) {
-    height: 400px;
-    width: 100%;
-  }
-}
-
-.avatarContent {
-  position: relative;
-}
-.cube {
-  width: 100px;
-  height: 155px;
-  flex-shrink: 0;
-  border: 1px solid var(--gray, #abb2bf);
-  border-left: none;
-  position: absolute;
-  left: 0;
-  bottom: 250px;
-  z-index: inherit;
-
-  @media screen and (max-width: $mantine-breakpoint-lg) {
-    width: 35px;
-  }
-
-  @media screen and (max-width: $mantine-breakpoint-md) {
-    display: none;
-  }
-}
-.dotsTop {
-  position: absolute;
-  width: 84px;
-  height: 84px;
-  flex-shrink: 0;
-  top: 100px;
+  bottom: 70px;
   left: 0px;
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    display: none;
+  }
 }
 
-.dotsBottom {
-  position: absolute;
-  width: 84px;
-  height: 84px;
-  flex-shrink: 0;
-  bottom: 15px;
-  right: 0px;
+.contactText {
+  color: light-dark(#000, var(--gray, #abb2bf));
+  font-family: 'Fira Code';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.contactItems {
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid var(--gray, #abb2bf);
+  width: 300px;
+  justify-content: center;
+  margin-left: 35%;
+}
+
+.contactTitle {
+  color: light-dark(#000, var(--mantine-color-white));
+  font-family: 'Fira Code';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 16px;
+}
+
+.contactIcon {
+  width: 32px;
+  height: 32px;
+  fill: light-dark(#000, var(--gray, #abb2bf));
+  color: light-dark(#000, var(--gray, #abb2bf));
+}
+
+.text {
+  color: light-dark(#000, var(--gray, #abb2bf));
+  font-family: 'Fira Code';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
