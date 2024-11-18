@@ -3,6 +3,7 @@ import { Group, Burger, Drawer, Stack, Container } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Logo from '@src/assets/ajh.png';
 import classes from './HeaderMenu.module.css';
+import { Link } from 'react-router-dom';
 
 const links = [
   { link: '/home', label: 'Home' },
@@ -48,17 +49,16 @@ export function HeaderMenu() {
 
   const items = links.map((link) => {
     return (
-      <a
+      <Link
         key={link.label}
-        href={link.link}
+        to={link.link}
         className={`${classes.link} ${selected === link.label ? classes.selected : ''}`}
-        onClick={(event) => {
-          event.preventDefault();
+        onClick={() => {
           setSelected(link.label);
         }}
       >
         <span className={classes.almohadilla}>#</span>{link.label}
-      </a>
+      </Link>
     );
   });
 
@@ -77,46 +77,48 @@ export function HeaderMenu() {
   });
 
   return (
-    <Container id='header' size="md">
-      <header className={classes.header}>
-        <section className={classes.inner}>
-          <div className={classes.spacer}>
-            <img src={Logo} alt="logo Andejecruher" className={classes.logo} />
-            <p className={classes.title}>Andejecruher</p>
-          </div>
-
-          <nav>
-            <Group gap={5} visibleFrom="sm">
-              {items}
-            </Group>
-          </nav>
-          <Burger opened={opened} onClick={open} size="md" hiddenFrom="sm" aria-label="Open menu" />
-          <Drawer opened={opened} onClose={close} title={
-            <div className={classes.spacer}>
+    <section id='header' className={classes.headerContent}>
+      <Container size="md">
+        <header className={classes.header}>
+          <section className={classes.inner}>
+            <Link className={classes.spacer} to={'/home'}>
               <img src={Logo} alt="logo Andejecruher" className={classes.logo} />
               <p className={classes.title}>Andejecruher</p>
-            </div>
-          }>
-            {/* Drawer content */}
-            <div className={classes.drawerContent}>
-              <div className={classes.drawerInner}>
-                <Stack
-                  className={classes.stack}
-                  bg="var(--mantine-color-body)"
-                  align="center" // Centrar horizontalmente
-                  justify="center" // Centrar verticalmente
-                  gap="md"
-                >
-                  {items}
-                </Stack>
-                <Group justify="center" gap={12} className={classes.itemsSocial}>
-                  {itemsSocial}
-                </Group>
+            </Link>
+
+            <nav>
+              <Group gap={5} visibleFrom="sm">
+                {items}
+              </Group>
+            </nav>
+            <Burger className={classes.burguer} opened={opened} onClick={open} size="sm" hiddenFrom="sm" aria-label="Open menu" />
+            <Drawer opened={opened} onClose={close} title={
+              <div className={classes.spacer}>
+                <img src={Logo} alt="logo Andejecruher" className={classes.logo} />
+                <p className={classes.title}>Andejecruher</p>
               </div>
-            </div>
-          </Drawer>
-        </section>
-      </header>
-    </Container>
+            }>
+              {/* Drawer content */}
+              <div className={classes.drawerContent}>
+                <div className={classes.drawerInner}>
+                  <Stack
+                    className={classes.stack}
+                    bg="var(--mantine-color-body)"
+                    align="center" // Centrar horizontalmente
+                    justify="center" // Centrar verticalmente
+                    gap="md"
+                  >
+                    {items}
+                  </Stack>
+                  <Group justify="center" gap={12} className={classes.itemsSocial}>
+                    {itemsSocial}
+                  </Group>
+                </div>
+              </div>
+            </Drawer>
+          </section>
+        </header>
+      </Container>
+    </section>
   );
 }

@@ -10,7 +10,9 @@ function Public() {
     <>
       <LinksSociales />
       <HeaderMenu />
-      <main>
+      <main style={{
+        marginTop: '61px',
+      }}>
         <Outlet />
       </main>
       <Footer />

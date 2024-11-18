@@ -1,10 +1,16 @@
 import { Container, Group, SimpleGrid, Text, Image, Button } from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
 import dots from '@src/assets/dots.svg';
 import avatar from '@src/assets/avatar.png';
 
 import classes from './AboutMe.module.css';
 
 export function AboutMe() {
+  const navigate = useNavigate();
+
+  const handleAboutMe = () => {
+    navigate('/about');
+  }
   return (
     <section id="about-me" className={classes.AboutMe}>
       <div className={classes.cube} />
@@ -27,6 +33,7 @@ export function AboutMe() {
                 variant="light"
                 color="initial"
                 className={classes.button}
+                onClick={() => handleAboutMe()}
               >
                 {`Saber más -->`}
               </Button>

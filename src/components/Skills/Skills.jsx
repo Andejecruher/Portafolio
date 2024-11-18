@@ -16,7 +16,7 @@ export function Skills() {
     },
     {
       title: 'Frameworks',
-      skills: 'VUEJS REACT NODEJS EXPRESS NEXTJS'
+      skills: 'VUEJS REACT NODEJS EXPRESS NEXTJS GRAPHQL'
     },
     {
       title: 'Libraries',

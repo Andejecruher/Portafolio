@@ -17,7 +17,15 @@ export default [
         sourceType: 'module',
       },
     },
-    settings: { react: { version: '18.3' } },
+    settings: {
+      react: { version: '18.3' },
+      'import/resolver': {
+        alias: {
+          map: [['@', './src']],
+          extensions: ['.ts', '.js', '.jsx', '.tsx', '.json'],
+        },
+      },
+    },
     plugins: {
       react,
       'react-hooks': reactHooks,

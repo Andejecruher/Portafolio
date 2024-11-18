@@ -84,7 +84,7 @@ export function Projects() {
         <Group justify="space-between" align='center' mb="lg">
           <Text align="center" size="xl" className={classes.title}><span className='almohadilla'>#</span>Proyectos</Text>
           <div className={classes.line} />
-          <Link align="center" size="xl" className={classes.open}>Ver todos {'-->'}</Link>
+          <Link align="center" size="xl" className={classes.open} to={'/work'}>Ver todos {'-->'}</Link>
         </Group>
         <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }}>
           {renderProjects()}

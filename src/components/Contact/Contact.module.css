@@ -75,6 +75,9 @@
   width: 300px;
   justify-content: center;
   margin-left: 35%;
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    margin-left: 0;
+  }
 }
 
 .contactTitle {
@@ -104,4 +107,27 @@
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+.contactText {
+  color: light-dark(#000, var(--gray, #abb2bf));
+  font-family: 'Fira Code';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+a {
+  color: light-dark(#000, var(--gray, #abb2bf));
+  font-family: 'Fira Code';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }

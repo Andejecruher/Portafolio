@@ -1,12 +1,14 @@
-.header {
-  height: rem(61px);
-  margin-bottom: rem(120px);
-  margin-top: 32px;
-  margin-bottom: 6px;
-  @media (max-width: $mantine-breakpoint-sm) {
-    margin-top: 16px;
-    height: rem(48px);
-    margin-bottom: 0px;
+.headerContent {
+  padding-top: 32px;
+  padding-bottom: 8px;
+  background-color: var(--background);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  @media screen and (max-width: $mantine-breakpoint-sm) {
+    padding-top: 16px;
+    padding-bottom: 0px;
   }
 }
 
@@ -31,6 +33,7 @@
       var(--mantine-color-gray-0),
       var(--mantine-color-dark-6)
     );
+    text-decoration: none;
   }
 
   @media (max-width: 767px) {
@@ -107,4 +110,14 @@ a > .almohadilla {
   align-items: flex-start; /* Centrar horizontalmente */
   justify-content: flex-start; /* Alinear a la izquierda */
   flex: 1;
+}
+
+.burguer {
+  border-radius: 5px;
+  padding: 0px 0px 0px 6px;
+  width: 30px;
+  height: 30px;
+}
+.burguer:hover {
+  background-color: rgba(199, 120, 221, 0.5) !important;
 }

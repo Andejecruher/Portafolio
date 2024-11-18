@@ -1,10 +1,17 @@
 import { Image, Container, Title, Button, Text } from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
 import image from '@src/assets/andejecruher.png';
 import dots from '@src/assets/dots.svg';
 import vector from '@src/assets/vector.svg';
+
 import classes from './Hero.module.css';
 
 export function Hero() {
+  const navigate = useNavigate();
+
+  const handleContact = () => {
+    navigate('/contact');
+  }
   return (
     <section id="hero">
       <Container size="md">
@@ -20,6 +27,7 @@ export function Hero() {
               color="initial"
               variant="outline"
               className={classes.button}
+              onClick={() => handleContact()}
             >
               ¡Contáctame!
             </Button>

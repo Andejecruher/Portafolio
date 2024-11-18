@@ -17,6 +17,24 @@
   }
 }
 
+.subtitle {
+  color: light-dark(#000, var(--gray, #abb2bf));
+  font-family: 'Fira Code';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px; /* 162.5% */
+}
+
+.text {
+  color: light-dark(#000, var(--gray, #abb2bf));
+  font-family: 'Fira Code';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px; /* 162.5% */
+}
+
 .open {
   color: light-dark(#000, var(--mantine-color-white));
   font-family: 'Fira Code';
