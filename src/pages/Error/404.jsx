@@ -29,11 +29,11 @@ export default function NotFoundPage() {
         <Image src={image} className={classes.mobileImage} />
         <div>
           <Title className={classes.title}>Algo no está bien...</Title>
-          <Text size="lg">
+          <Text size="lg" className={classes.text}>
             La página que estás intentando abrir no existe. Es posible que haya escrito mal la dirección o que la página se haya movido a otra URL.
             Si cree que se trata de un error, comuníquese con el soporte.
           </Text>
-          <Text size="lg" mt="md">
+          <Text size="lg" mt="md" className={classes.text}>
             Serás redirigido automáticamente a la página de inicio en {counter} segundos ...
           </Text>
           <Button variant="default" color="indigo" size="md" radius="md" mt="md" className={classes.control} onClick={(e) => {

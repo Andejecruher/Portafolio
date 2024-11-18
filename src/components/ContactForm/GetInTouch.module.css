@@ -1,0 +1,123 @@
+.contact {
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+.wrapper {
+  display: flex;
+  padding: rem(4px);
+  @media (max-width: $mantine-breakpoint-sm) {
+    flex-direction: column;
+  }
+}
+
+.form {
+  flex: 1;
+  padding: var(--mantine-spacing-xl);
+  padding-left: calc(var(--mantine-spacing-xl) * 2);
+  border-left: 0;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding: var(--mantine-spacing-md);
+    padding-left: var(--mantine-spacing-md);
+  }
+}
+
+.fields {
+  margin-top: rem(-12px);
+}
+
+.fieldInput {
+  flex: 1;
+
+  & + & {
+    margin-left: var(--mantine-spacing-md);
+
+    @media (max-width: $mantine-breakpoint-sm) {
+      margin-left: 0;
+      margin-top: var(--mantine-spacing-md);
+    }
+  }
+}
+
+.fieldsGroup {
+  display: flex;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    flex-direction: column;
+  }
+}
+
+.contacts {
+  box-sizing: border-box;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  padding-top: var(--mantine-spacing-xl);
+  padding-bottom: var(--mantine-spacing-xl);
+  flex: 0 0 rem(280px);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    margin-bottom: var(--mantine-spacing-sm);
+    padding-left: var(--mantine-spacing-md);
+  }
+}
+
+.title {
+  margin-bottom: calc(var(--mantine-spacing-xl) * 1.5);
+  color: light-dark(#000, var(--mantine-color-white));
+  font-family: 'Fira Code';
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  @media (max-width: $mantine-breakpoint-sm) {
+    margin-bottom: var(--mantine-spacing-xl);
+  }
+}
+
+.control {
+  @media (max-width: $mantine-breakpoint-sm) {
+    flex: 1;
+  }
+}
+
+label {
+  color: light-dark(#000, var(--mantine-color-white));
+  font-family: 'Fira Code';
+  font-size: 16px !important;
+  font-style: normal;
+  font-weight: 400 !important;
+  line-height: normal;
+}
+
+.cubeBottomListP {
+  width: 100px;
+  height: 155px;
+  flex-shrink: 0;
+  border: 1px solid var(--gray, #abb2bf);
+  border-right: none;
+  position: absolute;
+  right: 0;
+  bottom: 0px;
+  z-index: inherit;
+
+  @media screen and (max-width: $mantine-breakpoint-lg) {
+    width: 35px;
+  }
+
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    display: none;
+  }
+}
+.dotsTopList {
+  position: absolute;
+  display: flex;
+  width: 103px;
+  height: 103px;
+  bottom: 150px;
+  left: 0px;
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    display: none;
+  }
+}

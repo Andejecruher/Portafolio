@@ -4,10 +4,11 @@ import { useDisclosure } from '@mantine/hooks';
 import Logo from '@src/assets/ajh.png';
 import classes from './HeaderMenu.module.css';
 import { Link } from 'react-router-dom';
+import { SwitchColor } from '@src/components/SwitchColor/SwitchColor';
 
 const links = [
   { link: '/home', label: 'Home' },
-  { link: '/work', label: 'Proyectos' },
+  { link: '/projects', label: 'Proyectos' },
   { link: '/about', label: 'Sobre Mi' },
   { link: '/contact', label: 'Contacto' },
   { link: '/blog', label: 'Blog' },
@@ -93,10 +94,13 @@ export function HeaderMenu() {
             </nav>
             <Burger className={classes.burguer} opened={opened} onClick={open} size="sm" hiddenFrom="sm" aria-label="Open menu" />
             <Drawer opened={opened} onClose={close} title={
-              <div className={classes.spacer}>
-                <img src={Logo} alt="logo Andejecruher" className={classes.logo} />
-                <p className={classes.title}>Andejecruher</p>
-              </div>
+              <Group align="center" justify="space-between" style={{ padding: '0 16px' }}>
+                <div className={classes.spacer}>
+                  <img src={Logo} alt="logo Andejecruher" className={classes.logo} />
+                  <p className={classes.title}>Andejecruher</p>
+                </div>
+                <SwitchColor hiddenFrom="sm" />
+              </Group>
             }>
               {/* Drawer content */}
               <div className={classes.drawerContent}>

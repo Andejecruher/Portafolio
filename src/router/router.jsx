@@ -3,6 +3,9 @@ import Public from "@src/components/Layout/public";
 import ErrorPage from "@src/pages/Error/Error";
 import NotFoundPage from "@src/pages/Error/404";
 import HomePage from "@src/pages/Home/Home";
+import ProjectsPage from "@src/pages/Projects/Projects";
+import AboutMe from "@src/pages/AboutMe/AboutMe";
+import ContactPage from "@src/pages/Contact/Contact";
 
 
 const router = createBrowserRouter(
@@ -27,15 +30,15 @@ const router = createBrowserRouter(
         },
         {
           path: "/about",
-          element: <div>About</div>,
+          element: <AboutMe />,
         },
         {
-          path: "/work",
-          element: <div>Work</div>,
+          path: "/projects",
+          element: <ProjectsPage />,
         },
         {
           path: "/contact",
-          element: <div>Contact</div>,
+          element: <ContactPage />,
         },
         {
           path: "/blog",
@@ -43,7 +46,7 @@ const router = createBrowserRouter(
         },
         {
           path: "*",
-          element: <Navigate to="/not-found" />,
+          element: <NotFoundPage />,
         },
       ],
     },

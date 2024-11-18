@@ -76,7 +76,18 @@
   justify-content: center;
   margin-left: 35%;
   @media screen and (max-width: $mantine-breakpoint-md) {
-    margin-left: 0;
+    margin-left: 20%;
+    width: 270px;
+  }
+
+  @media screen and (max-width: $mantine-breakpoint-sm) {
+    margin-left: 0%;
+    width: 270px;
+  }
+
+  @media screen and (max-width: $mantine-breakpoint-xs) {
+    margin-left: 0%;
+    width: 300px;
   }
 }
 

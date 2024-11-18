@@ -9,6 +9,7 @@
 }
 
 .title {
+  color: light-dark(#000, var(--mantine-color-black));
   font-weight: 900;
   font-size: rem(34px);
   margin-bottom: var(--mantine-spacing-md);
@@ -19,6 +20,10 @@
   @media (max-width: $mantine-breakpoint-sm) {
     font-size: rem(32px);
   }
+}
+
+.text {
+  color: light-dark(#000, var(--mantine-color-black));
 }
 
 .control {

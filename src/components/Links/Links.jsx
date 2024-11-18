@@ -1,4 +1,5 @@
 import { Stack } from '@mantine/core';
+import { SwitchColor } from '@src/components/SwitchColor/SwitchColor';
 import classes from './Links.module.css';
 
 
@@ -50,6 +51,15 @@ export function LinksSociales() {
 
   return (
     <section id='links' className={classes.sociales}>
+      <Stack
+        bg="transparent"
+        color='light-dark(var(--mantine-color-body), var(--mantine-color-white))'
+        align="flex-start"
+        justify="flex-start"
+        gap="xs"
+      >
+        <SwitchColor />
+      </Stack>
       <div className={classes.svgLine}>
         <svg width="2" height="191" viewBox="0 0 2 191" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" clipRule="evenodd" d="M0.499995 191L0.500004 0L1.5 4.37114e-08L1.5 191L0.499995 191Z" fill="currentColor" />

@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  color: light-dark(#000, var(--mantine-color-white));
+}
+
+.icon {
+  margin-right: var(--mantine-spacing-md);
+  background-color: transparent;
+}
+
+.title {
+  color: #c778dd;
+  font-family: 'Fira Code';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.description {
+  color: light-dark(#000, var(--mantine-color-white));
+}

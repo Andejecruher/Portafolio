@@ -92,3 +92,16 @@ button:hover {
 .card-buttons {
   margin-top: auto;
 }
+
+.card-small {
+  padding-top: 0px;
+}
+
+.card-small-tecnology {
+  border-top: none;
+}
+
+#projects {
+  margin-top: 68px;
+  margin-bottom: 100px;
+}

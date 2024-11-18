@@ -1,4 +1,5 @@
 .skills {
+  position: relative;
   margin-top: 90px;
   margin-bottom: 70px;
 }
@@ -80,6 +81,13 @@
   height: 300px;
 }
 
+.decorationsList {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  margin-top: 50px;
+}
+
 .dotsTop {
   position: absolute;
   display: flex;
@@ -110,6 +118,19 @@
     right: 40px;
     top: 0;
   }
+}
+
+.logoList {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  position: absolute;
+  right: 10px;
+  top: 20px;
 }
 
 .logo {
@@ -158,5 +179,80 @@
   @media screen and (max-width: $mantine-breakpoint-sm) {
     right: 40px;
     bottom: 45px;
+  }
+}
+
+.cubeBottomList {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border: 1px solid var(--gray, #abb2bf);
+  right: 0px;
+  bottom: 45px;
+
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    right: 0px;
+    bottom: 45px;
+  }
+
+  @media screen and (max-width: $mantine-breakpoint-sm) {
+    right: 0px;
+    bottom: 45px;
+  }
+}
+
+.myFunFacts {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.fact {
+  padding: 8px;
+  color: light-dark(#000, var(--mantine-color-black));
+  border: 1px solid var(--gray, #abb2bf);
+}
+
+.facts__content {
+  display: flex;
+  align-items: start;
+  flex-wrap: wrap;
+}
+.facts__list {
+  margin-top: 20px;
+  display: flex;
+  gap: 16px;
+  align-items: start;
+  flex-wrap: wrap;
+}
+
+.cubeBottomListP {
+  width: 100px;
+  height: 155px;
+  flex-shrink: 0;
+  border: 1px solid var(--gray, #abb2bf);
+  border-right: none;
+  position: absolute;
+  right: 0;
+  bottom: 0px;
+  z-index: inherit;
+
+  @media screen and (max-width: $mantine-breakpoint-lg) {
+    width: 35px;
+  }
+
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    display: none;
+  }
+}
+.dotsTopList {
+  position: absolute;
+  display: flex;
+  width: 103px;
+  height: 103px;
+  bottom: 150px;
+  left: 0px;
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    display: none;
   }
 }

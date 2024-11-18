@@ -4,9 +4,9 @@
   align-items: center;
   gap: 8px;
   position: fixed;
-  top: 0;
+  top: 2px;
   left: 17px;
-  z-index: 10;
+  z-index: 12;
   @media (max-width: 1024px) {
     display: none;
   }

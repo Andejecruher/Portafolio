@@ -27,7 +27,7 @@ export function Skills() {
       skills: 'FIGMA VSCODE POSTMAN INSOMNIA GITHUB DBAVER'
     },
     {
-      title: 'Others',
+      title: 'Otros',
       skills: 'GIT NETLIFY VERCCEL'
     }
   ];
