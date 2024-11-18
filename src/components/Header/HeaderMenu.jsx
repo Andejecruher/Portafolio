@@ -1,10 +1,12 @@
-import { useState } from 'react';
-import { Group, Burger, Drawer, Stack, Container } from '@mantine/core';
+import { useState, useEffect } from 'react';
 import { useDisclosure } from '@mantine/hooks';
-import Logo from '@src/assets/ajh.png';
-import classes from './HeaderMenu.module.css';
+import { useWindowScroll } from '@mantine/hooks';
+import { Group, Burger, Drawer, Stack, Container } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { SwitchColor } from '@src/components/SwitchColor/SwitchColor';
+import Logo from '@src/assets/ajh.png';
+
+import classes from './HeaderMenu.module.css';
 
 const links = [
   { link: '/home', label: 'Home' },
@@ -45,6 +47,7 @@ const socialLinks = [
 ];
 
 export function HeaderMenu() {
+  const [scroll, scrollTo] = useWindowScroll();
   const [opened, { open, close }] = useDisclosure(false);
   const [selected, setSelected] = useState('Home');
 
@@ -56,6 +59,7 @@ export function HeaderMenu() {
         className={`${classes.link} ${selected === link.label ? classes.selected : ''}`}
         onClick={() => {
           setSelected(link.label);
+          close();
         }}
       >
         <span className={classes.almohadilla}>#</span>{link.label}
@@ -76,6 +80,10 @@ export function HeaderMenu() {
       </a>
     );
   });
+
+  useEffect(() => {
+    scrollTo({ y: 0 });
+  }, [selected, scrollTo]);
 
   return (
     <section id='header' className={classes.headerContent}>
