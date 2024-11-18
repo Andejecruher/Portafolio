@@ -26,7 +26,7 @@ export function GetInTouch() {
 
               <div className={classes.fields}>
                 <SimpleGrid cols={{ base: 1, sm: 2 }}>
-                  <TextInput label="Tu nombre" placeholder="Tu nombre" />
+                  <TextInput label="Tu nombre" placeholder="Tu nombre" required />
                   <TextInput label="Tu correo" placeholder="example@gmail.com" required />
                 </SimpleGrid>
 
@@ -34,13 +34,15 @@ export function GetInTouch() {
 
                 <Textarea
                   mt="md"
+                  resize="vertical"
                   label="Tu mensaje"
                   placeholder="Por favor, escribe tu mensaje aquí"
-                  minRows={3}
+                  minRows={6}
+                  required
                 />
 
                 <Group justify="flex-end" mt="md">
-                  <Button className={classes.control} variant='outlined' color="initial">
+                  <Button type='submit' className={classes.control} variant='outlined' color="initial">
                     Enviar mensaje
                   </Button>
                 </Group>

@@ -68,4 +68,7 @@
   flex-shrink: 0;
   top: 80px;
   left: -35px;
+  @media screen and (max-width: $mantine-breakpoint-md) {
+    display: none;
+  }
 }

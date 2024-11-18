@@ -22,10 +22,10 @@ function ContactIcon({ icon: Icon, title, description, ...others }) {
 }
 
 const MOCKDATA = [
-  { title: 'Email', description: 'andejecruher@gmail.com', icon: IconBrandTelegram },
-  { title: 'Phone', description: '+52 322 318 8252', icon: IconPhone },
-  { title: 'Address', description: 'Puerto Vallarta, Jalisco', icon: IconMapPin },
-  { title: 'Working hours', description: '8 a.m. – 8 p.m.', icon: IconSun },
+  { title: 'Correo', description: 'andejecruher@gmail.com', icon: IconBrandTelegram },
+  { title: 'Telefono', description: '+52 322 318 8252', icon: IconPhone },
+  { title: 'Ubicacion', description: 'Puerto Vallarta, Jalisco', icon: IconMapPin },
+  { title: 'Horas de trabajo', description: '9 a.m. – 6 p.m.', icon: IconSun },
 ];
 
 export function ContactIconsList() {

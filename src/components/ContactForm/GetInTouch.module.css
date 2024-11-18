@@ -77,6 +77,7 @@
 }
 
 .control {
+  justify-content: center;
   @media (max-width: $mantine-breakpoint-sm) {
     flex: 1;
   }
