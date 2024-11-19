@@ -4,11 +4,13 @@
   padding-top: calc(var(--mantine-spacing-sm) * 4);
   padding-bottom: calc(var(--mantine-spacing-sm) * 4);
   gap: 20;
+  margin-top: 150px;
   @media screen and (max-width: $mantine-breakpoint-md) {
     flex-direction: column;
     align-items: center;
     padding-top: calc(var(--mantine-spacing-sm));
     padding-bottom: calc(var(--mantine-spacing-sm));
+    margin-top: 80px;
   }
 }
 

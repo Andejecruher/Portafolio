@@ -1,0 +1,63 @@
+.inner {
+  display: flex;
+  justify-content: space-between;
+  padding-top: calc(var(--mantine-spacing-sm) * 4);
+  padding-bottom: calc(var(--mantine-spacing-sm) * 4);
+  margin-bottom: 30px;
+}
+
+.content {
+  max-width: rem(480px);
+  margin-right: calc(var(--mantine-spacing-sm) * 3);
+  @media (max-width: $mantine-breakpoint-md) {
+    max-width: 100%;
+    margin-right: 0;
+  }
+}
+
+.title {
+  color: light-dark(#000, var(--mantine-color-white));
+  font-family: 'Fira Code, monospace';
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  @media (max-width: $mantine-breakpoint-xs) {
+    font-size: rem(22px);
+  }
+}
+
+.control {
+  @media (max-width: $mantine-breakpoint-xs) {
+    flex: 1;
+  }
+}
+
+.image {
+  width: rem(376px);
+  height: rem(356px);
+  @media (max-width: $mantine-breakpoint-md) {
+    display: none;
+  }
+}
+
+.highlight {
+  position: relative;
+  background-color: var(--mantine-color-blue-light);
+  border-radius: var(--mantine-radius-sm);
+  padding: rem(4px) rem(12px);
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px; /* Espacio entre los elementos */
+  @media (max-width: $mantine-breakpoint-md) {
+    text-align: justify;
+  }
+}
+
+.list li {
+  margin-top: 0 !important;
+  margin-bottom: 0; /* Asegúrate de que no haya margen inferior */
+}

@@ -6,7 +6,7 @@ import HomePage from "@src/pages/Home/Home";
 import ProjectsPage from "@src/pages/Projects/Projects";
 import AboutMe from "@src/pages/AboutMe/AboutMe";
 import ContactPage from "@src/pages/Contact/Contact";
-
+import BlogPage from "@src/pages/Blog/Blog";
 
 const router = createBrowserRouter(
   [
@@ -42,7 +42,11 @@ const router = createBrowserRouter(
         },
         {
           path: "/blog",
-          element: <div>Block</div>,
+          element: <BlogPage />,
+        },
+        {
+          path: "/blog/:title",
+          element: <BlogPage />,
         },
         {
           path: "*",
