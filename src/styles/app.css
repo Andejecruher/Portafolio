@@ -37,6 +37,14 @@ button:hover {
   ) !important; /* Color con opacidad */
 }
 
+input,
+textarea {
+  font-size: var(
+    --input-fz,
+    var(--input-fz, var(--mantine-font-size-md))
+  ) !important;
+}
+
 .card-tecnology {
   color: light-dark(#000, var(--mantine-color-black));
   display: flex;

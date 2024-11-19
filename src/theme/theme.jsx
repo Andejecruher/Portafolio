@@ -7,6 +7,7 @@ const theme = createTheme({
   colorScheme: 'dark',
   white: '#ffffff',
   black: '#ABB2BF',
+  green: ['##98C379'],
   colors: {
     black: ['#ABB2BF'],
     orange: ['#E06B74'],

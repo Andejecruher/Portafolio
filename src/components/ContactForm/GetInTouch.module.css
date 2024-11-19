@@ -14,7 +14,7 @@
 .form {
   flex: 1;
   padding: var(--mantine-spacing-xl);
-  padding-left: calc(var(--mantine-spacing-xl) * 2);
+  padding-left: calc(var(--mantine-spacing-md) * 2);
   border-left: 0;
 
   @media (max-width: $mantine-breakpoint-sm) {
@@ -63,7 +63,7 @@
   }
 }
 
-.title {
+.titlePage {
   margin-bottom: calc(var(--mantine-spacing-xl) * 1.5);
   color: light-dark(#000, var(--mantine-color-white));
   font-family: 'Fira Code';
@@ -121,4 +121,22 @@ label {
   @media screen and (max-width: $mantine-breakpoint-md) {
     display: none;
   }
+}
+
+.title {
+  color: light-dark(#000, var(--mantine-color-white));
+  font-family: 'Fira Code';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.description {
+  color: light-dark(#000, var(--mantine-color-white));
+  font-family: 'Fira Code';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

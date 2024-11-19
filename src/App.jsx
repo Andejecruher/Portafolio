@@ -1,19 +1,26 @@
 import './index.css';
+import '@mantine/notifications/styles.css';
 import '@mantine/core/styles.css';
-import '@src/styles/app.css';
+
 
 import { MantineProvider } from '@mantine/core';
+import { Notifications } from '@mantine/notifications';
 import { RouterProvider } from "react-router-dom";
+import { BlogProvider } from '@src/context/BlogProvider';
 import routes from "@src/router/router";
 import theme from "@src/theme/theme";
+import '@src/styles/app.css';
 
 function App() {
   return (
-    <MantineProvider theme={theme} defaultColorScheme="dark" withGlobalStyles withNormalizeCSS>
-      <RouterProvider future={{
-        v7_startTransition: true,
-      }} router={routes} />
-    </MantineProvider>
+    <BlogProvider>
+      <MantineProvider theme={theme} defaultColorScheme="dark" withGlobalStyles withNormalizeCSS>
+        <Notifications />
+        <RouterProvider future={{
+          v7_startTransition: true,
+        }} router={routes} />
+      </MantineProvider>
+    </BlogProvider>
   );
 }
 
