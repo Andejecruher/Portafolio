@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDisclosure } from '@mantine/hooks';
-import { useWindowScroll } from '@mantine/hooks';
 import { Group, Burger, Drawer, Stack, Container } from '@mantine/core';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { SwitchColor } from '@src/components/SwitchColor/SwitchColor';
 import Logo from '@src/assets/ajh.png';
 
@@ -47,9 +46,23 @@ const socialLinks = [
 ];
 
 export function HeaderMenu() {
-  const [scroll, scrollTo] = useWindowScroll();
   const [opened, { open, close }] = useDisclosure(false);
   const [selected, setSelected] = useState('Home');
+  const location = useLocation();
+
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const currentLink = links.find(link => link.link === currentPath);
+    if (currentLink) {
+      setSelected(currentLink.label);
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location, selected]);
+
+  const handleMenuClick = (label) => {
+    setSelected(label);
+    close();
+  };
 
   const items = links.map((link) => {
     return (
@@ -57,10 +70,7 @@ export function HeaderMenu() {
         key={link.label}
         to={link.link}
         className={`${classes.link} ${selected === link.label ? classes.selected : ''}`}
-        onClick={() => {
-          setSelected(link.label);
-          close();
-        }}
+        onClick={() => handleMenuClick(link.label)}
       >
         <span className={classes.almohadilla}>#</span>{link.label}
       </Link>
@@ -80,10 +90,6 @@ export function HeaderMenu() {
       </a>
     );
   });
-
-  useEffect(() => {
-    scrollTo({ y: 0 });
-  }, [selected, scrollTo]);
 
   return (
     <section id='header' className={classes.headerContent}>

@@ -5,7 +5,7 @@ import { IconSun, IconMoonStars } from '@tabler/icons-react';
 export function SwitchColor() {
   const theme = useMantineTheme();
   const { setColorScheme, colorScheme } = useMantineColorScheme();
-  console.log(colorScheme);
+
   const sunIcon = (
     <IconSun
       style={{ width: rem(16), height: rem(16) }}
