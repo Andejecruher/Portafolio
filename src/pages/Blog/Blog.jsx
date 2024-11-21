@@ -1,13 +1,14 @@
 import { Breadcrumbs } from "@src/components/Breadcrumbs/Breadcrumbs";
 import { Lastest } from "@src/components/Lastest/Lastest";
-import { Skills } from "@src/components/Skills/Skills";
+import { HeaderSearch } from "@src/components/HeaderSearch/HeaderSearch";
 
 const BlogPage = () => {
   return (
     <section id="blog">
       <Breadcrumbs title="Blog" description="Mantente informado !" />
       <Lastest />
-      <Skills />
+      <HeaderSearch />
+
     </section>
   );
 };

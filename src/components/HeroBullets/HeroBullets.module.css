@@ -17,7 +17,7 @@
 
 .title {
   color: light-dark(#000, var(--mantine-color-white));
-  font-family: 'Fira Code, monospace';
+  font-family: 'Fira Code';
   font-size: 32px;
   font-style: normal;
   font-weight: 600;
@@ -36,8 +36,12 @@
 .image {
   width: rem(376px);
   height: rem(356px);
+  flex: inherit !important;
+
   @media (max-width: $mantine-breakpoint-md) {
-    display: none;
+    width: 100%;
+    height: auto;
+    margin-bottom: var(--mantine-spacing-md);
   }
 }
 
@@ -60,4 +64,18 @@
 .list li {
   margin-top: 0 !important;
   margin-bottom: 0; /* Asegúrate de que no haya margen inferior */
+}
+
+@media (max-width: $mantine-breakpoint-md) {
+  .inner {
+    flex-direction: column;
+  }
+
+  .content {
+    order: 2;
+  }
+
+  .image {
+    order: 1;
+  }
 }

@@ -1,0 +1,96 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  padding: calc(var(--mantine-spacing-md) * 2);
+  border-radius: var(--mantine-radius-md);
+  background-color: light-dark(
+    var(--mantine-color-white),
+    var(--mantine-color-body)
+  );
+  border: 1px solid
+    light-dark(var(--mantine-color-gray-3), var(--mantine-color-body));
+  margin-bottom: calc(var(--mantine-spacing-lg) * 4);
+  margin-top: calc(var(--mantine-spacing-lg) * 4);
+  @media (max-width: $mantine-breakpoint-sm) {
+    flex-direction: column-reverse;
+    padding: var(--mantine-spacing-md);
+  }
+}
+
+.image {
+  max-width: 40%;
+  flex: 1;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    max-width: 100%;
+  }
+}
+
+.body {
+  padding-right: calc(var(--mantine-spacing-xl) * 4);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding-right: 0;
+    margin-top: var(--mantine-spacing-xl);
+  }
+}
+
+.title {
+  color: light-dark(#000, var(--mantine-color-white));
+  font-family: 'Fira Code';
+  line-height: 1;
+  margin-bottom: var(--mantine-spacing-md);
+}
+
+.subtitle {
+  color: light-dark(#000, var(--mantine-color-black));
+  font-size: 18px;
+  font-family: 'Fira Code';
+  font-weight: 700;
+}
+
+.text {
+  color: light-dark(#000, var(--mantine-color-black));
+  font-size: 16px;
+  font-family: 'Fira Code';
+  font-weight: 400;
+}
+
+.controls {
+  display: flex;
+  margin-top: var(--mantine-spacing-md);
+}
+
+.inputWrapper {
+  width: 100%;
+  flex: 1;
+}
+
+.input {
+  color: light-dark(#000, var(--mantine-color-white));
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0;
+  border-color: light-dark(
+    var(--mantine-color-black),
+    var(--mantine-color-black)
+  );
+  background-color: light-dark(
+    var(--mantine-color-white),
+    var(--mantine-color-body)
+  );
+}
+
+.input:focus {
+  border-color: light-dark(
+    var(--mantine-color-black),
+    var(--mantine-color-black)
+  );
+  outline: 1px solid
+    light-dark(var(--mantine-color-black), var(--mantine-color-black));
+}
+
+.control {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

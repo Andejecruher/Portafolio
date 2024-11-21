@@ -55,7 +55,7 @@
 }
 
 .selected {
-  color: light-dark(var(--mantine-color-white), #fff);
+  color: light-dark(#000, #fff);
   background-color: light-dark(var(--mantine-color-gray-0), transparent);
 }
 

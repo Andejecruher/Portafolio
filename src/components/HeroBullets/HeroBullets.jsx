@@ -49,7 +49,7 @@ export function HeroBullets({ article }) {
               </Button>
             </Group>
           </div>
-          <Image src={article.featured_image} className={classes.image} />
+          <Image src={article.featured_image} className={`sm:w-[60%] ${classes.image}`} />
         </div>
       </Container>
     </section>

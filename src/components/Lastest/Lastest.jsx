@@ -24,8 +24,18 @@ export function Lastest() {
 
   return (
     <section id="lastest">
-      <Container size="md">
-        <Carousel classNames={classes} slideGap="xs" controlsOffset="xs" controlSize={30} loop dragFree draggable={false} withIndicators transitionProps={{ duration: TRANSITION_DURATION }}>
+      <Container size="lg">
+        <Carousel
+          classNames={classes}
+          slideGap="xs"
+          controlsOffset="xs"
+          controlSize={40}
+          loop
+          dragFree
+          draggable={false}
+          withIndicators
+          transitionProps={{ duration: TRANSITION_DURATION }}
+        >
           {slides}
         </Carousel>
       </Container>
