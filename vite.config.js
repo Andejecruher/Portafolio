@@ -20,5 +20,6 @@ export default defineConfig({
     sourcemap: true, // Habilitar sourcemaps
     host: true, // Escuchar en todas las interfaces
     port: 3000, // Puedes cambiar el puerto si lo deseas
+    historyApiFallback: true, // Habilitar rutas de cliente
   },
 });
