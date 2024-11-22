@@ -1,24 +1,20 @@
-import { useEffect } from 'react';
 import { Container } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
-import { HeroBullets } from '@src/components/HeroBullets/HeroBullets';
+import { HeroBullets, HeroBulletsSkeleton } from '@src/components/HeroBullets/HeroBullets';
 import { useBlog } from '@src/context/useBlog';
 
 import classes from "./Lastest.module.css";
 
 
 export function Lastest() {
-  const { articles, fetchArticles, isLoading, error } = useBlog();
-  const TRANSITION_DURATION = 200;
-  useEffect(() => {
-    // Fetch the articles when the component mounts
-    fetchArticles();
-  }, []);
+  const { latestPosts, loadingStatus, error } = useBlog();
+  const { latestPosts: isLoading } = loadingStatus;
 
-  if (isLoading) return <p>Cargando artículos...</p>;
+
+  if (isLoading) return <HeroBulletsSkeleton />;
   if (error) return <p>Error: {error}</p>;
 
-  const slides = articles && articles.map((article) => (
+  const slides = latestPosts && latestPosts.map((article) => (
     <HeroBullets key={article.id} article={article} />
   ));
 
@@ -34,7 +30,6 @@ export function Lastest() {
           dragFree
           draggable={false}
           withIndicators
-          transitionProps={{ duration: TRANSITION_DURATION }}
         >
           {slides}
         </Carousel>

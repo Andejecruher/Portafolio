@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
   getArticles,
@@ -18,129 +18,159 @@ export const BlogProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
   const [pagination, setPagination] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-  const [isLoadingComments, setIsLoadingComments] = useState(false);
+  const [loadingStatus, setLoadingStatus] = useState({
+    latestPosts: false,
+    articles: false,
+    categories: false,
+    tags: false,
+    article: false,
+    createComment: false,
+    newsletter: false,
+  });
+  const [errorStatus, setErrorStatus] = useState({
+    latestPosts: null,
+    articles: null,
+    categories: null,
+    tags: null,
+    article: null,
+    createComment: null,
+    newsletter: null,
+  });
   const [article, setArticle] = useState(null);
   const [category, setCategory] = useState(null);
   const [tag, setTag] = useState(null);
   const [search, setSearch] = useState('');
-  const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [pageComments, setPageComments] = useState(1);
 
-  const fetchLatestPosts = async () => {
+  // Actualiza el estado de carga por solicitud
+  const updateLoadingStatus = useCallback((key, status) => {
+    setLoadingStatus((prev) => ({ ...prev, [key]: status }));
+  }, []);
+
+  // Actualiza el estado de errores por solicitud
+  const updateErrorStatus = useCallback((key, errorMessage) => {
+    setErrorStatus((prev) => ({ ...prev, [key]: errorMessage }));
+  }, []);
+
+  // Función para obtener los últimos posts
+  const fetchLatestPosts = useCallback(async () => {
     try {
+      updateLoadingStatus('latestPosts', true);
       const response = await getLatestPosts();
       if (response && response.data) setLatestPosts(response.data);
     } catch (err) {
-      setError('Error fetching latest posts');
-      return err;
+      updateErrorStatus('latestPosts', 'Error fetching latest posts');
+      console.error(err);
+    } finally {
+      updateLoadingStatus('latestPosts', false);
     }
-  };
+  }, [updateLoadingStatus, updateErrorStatus]);
 
-  const fetchArticles = async (query) => {
+  // Función para obtener los artículos
+  const fetchArticles = useCallback(async (query) => {
     try {
-      setIsLoading(true);
+      updateLoadingStatus('articles', true);
       const response = await getArticles(query);
       if (response && response.data) {
         setArticles(response.data);
         setPagination(response.pagination || {});
       }
-      setIsLoading(false);
     } catch (err) {
-      setIsLoading(false);
-      setError('Error fetching articles');
-      return err;
+      updateErrorStatus('articles', 'Error fetching articles');
+      console.error(err);
+    } finally {
+      updateLoadingStatus('articles', false);
     }
-  };
+  }, [updateLoadingStatus, updateErrorStatus]);
 
-  const fetchArticleById = async (id) => {
+  // Función para obtener un artículo por ID
+  const fetchArticleById = useCallback(async (id) => {
     try {
-      setIsLoading(true);
+      updateLoadingStatus('article', true);
       const response = await getArticleById(id);
       if (response && response.data) setArticle(response.data);
-      setIsLoading(false);
     } catch (err) {
-      setError('Error fetching article');
-      setIsLoading(false);
-      return err;
+      updateErrorStatus('article', 'Error fetching article');
+      console.error(err);
+    } finally {
+      updateLoadingStatus('article', false);
     }
-  };
+  }, [updateLoadingStatus, updateErrorStatus]);
 
-  const fetchArticleByIdComments = async (id) => {
+  // Función para obtener categorías
+  const fetchCategories = useCallback(async () => {
     try {
-      setIsLoadingComments(true);
-      const response = await getArticleById(id);
-      if (response && response.data) setArticle(response.data);
-      setIsLoadingComments(false);
-    } catch (err) {
-      setError('Error fetching article');
-      setIsLoadingComments(false);
-      return err;
-    }
-  };
-
-  const fetchCategories = async () => {
-    try {
+      updateLoadingStatus('categories', true);
       const response = await getCategories();
       if (response && response.data) setCategories(response.data);
     } catch (err) {
-      setError('Error fetching categories');
-      return err;
+      updateErrorStatus('categories', 'Error fetching categories');
+      console.error(err);
+    } finally {
+      updateLoadingStatus('categories', false);
     }
-  };
+  }, [updateLoadingStatus, updateErrorStatus]);
 
-  const fetchTags = async () => {
+  // Función para obtener tags
+  const fetchTags = useCallback(async () => {
     try {
+      updateLoadingStatus('tags', true);
       const response = await getTags();
       if (response && response.data) setTags(response.data);
     } catch (err) {
-      setError('Error fetching tags');
-      return err;
+      updateErrorStatus('tags', 'Error fetching tags');
+      console.error(err);
+    } finally {
+      updateLoadingStatus('tags', false);
     }
-  };
+  }, [updateLoadingStatus, updateErrorStatus]);
 
-  const fetchCreateComment = async (data) => {
+  // Función para crear un comentario
+  const fetchCreateComment = useCallback(async (data) => {
     try {
+      updateLoadingStatus('createComment', true);
       const response = await createComment(data);
-      if (response && response.data) {
-        setArticle(response.data);
-      }
+      if (response && response.data) setArticle(response.data);
     } catch (err) {
-      setError('Error creating comment');
-      return err;
+      updateErrorStatus('createComment', 'Error creating comment');
+      console.error(err);
+    } finally {
+      updateLoadingStatus('createComment', false);
     }
-  };
+  }, [updateLoadingStatus, updateErrorStatus]);
 
-  const fetchRegisterNewsletter = async (data) => {
+  // Función para registrar al newsletter
+  const fetchRegisterNewsletter = useCallback(async (data) => {
     try {
+      updateLoadingStatus('newsletter', true);
       const response = await registerNewsletter(data);
-      if (response && response.data) {
-        return response.data;
-      }
+      return response?.data || null;
     } catch (err) {
-      setError('Error registering newsletter');
-      return err;
+      updateErrorStatus('newsletter', 'Error registering newsletter');
+      console.error(err);
+      return null;
+    } finally {
+      updateLoadingStatus('newsletter', false);
     }
-  };
+  }, [updateLoadingStatus, updateErrorStatus]);
 
-  const fetchAllData = async () => {
-    setIsLoading(true);
+  // Fetch inicial de todos los datos
+  const fetchAllData = useCallback(async () => {
     await Promise.all([fetchLatestPosts(), fetchArticles(), fetchCategories(), fetchTags()]);
-    setIsLoading(false);
-  };
+  }, [fetchLatestPosts, fetchArticles, fetchCategories, fetchTags]);
 
+  // Efectos
   useEffect(() => {
     setTag(null);
     setSearch('');
     if (category === 'all') {
       fetchArticles('');
-    }
-    if (category && category !== 'all' && category !== 'Todas') {
+    } else if (category && category !== 'all' && category !== 'Todas') {
       const query = `?category=${category.id}`;
       fetchArticles(query);
     }
-  }, [category]);
+  }, [category, fetchArticles]);
 
   useEffect(() => {
     setSearch('');
@@ -149,7 +179,7 @@ export const BlogProvider = ({ children }) => {
       const query = `?tag=${tag.id}`;
       fetchArticles(query);
     }
-  }, [tag]);
+  }, [tag, fetchArticles]);
 
   useEffect(() => {
     setTag(null);
@@ -157,7 +187,7 @@ export const BlogProvider = ({ children }) => {
       const query = `?search=${search}`;
       fetchArticles(query);
     }
-  }, [search]);
+  }, [search, fetchArticles]);
 
   return (
     <BlogContext.Provider
@@ -167,15 +197,14 @@ export const BlogProvider = ({ children }) => {
         categories,
         tags,
         pagination,
-        isLoading,
-        error,
+        loadingStatus,
+        errorStatus,
         article,
         tag,
         category,
         page,
         search,
         pageComments,
-        isLoadingComments,
         setArticle,
         setTag,
         setCategory,
@@ -186,7 +215,6 @@ export const BlogProvider = ({ children }) => {
         fetchAllData,
         fetchArticles,
         fetchCreateComment,
-        fetchArticleByIdComments,
         fetchRegisterNewsletter,
       }}
     >

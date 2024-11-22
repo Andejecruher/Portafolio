@@ -62,6 +62,7 @@
 }
 
 .list li {
+  font-size: 14px;
   margin-top: 0 !important;
   margin-bottom: 0; /* Asegúrate de que no haya margen inferior */
 }
