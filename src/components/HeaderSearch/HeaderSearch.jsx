@@ -1,5 +1,5 @@
 import { IconSearch } from '@tabler/icons-react';
-import { Autocomplete, Burger, Group, Container } from '@mantine/core';
+import { Autocomplete, Burger, Group, Container, Collapse } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './HeaderSearch.module.css';
 
@@ -9,6 +9,7 @@ const links = [
   { key: 'learn', link: '/learn', label: 'Learn' },
   { key: 'community', link: '/community', label: 'Community' },
 ];
+
 
 export function HeaderSearch() {
   const [opened, { toggle }] = useDisclosure(false);
@@ -24,8 +25,9 @@ export function HeaderSearch() {
     </a>
   ));
 
+
   return (
-    <section id="header-search">
+    <section id="header-search" className={classes.headerSearch}>
       <Container size="md">
         <header className={classes.header}>
           <div className={classes.inner}>
@@ -38,7 +40,7 @@ export function HeaderSearch() {
                 placeholder="Search"
                 leftSection={<IconSearch size={16} stroke={1.5} />}
                 data={['React', 'Angular', 'Vue', 'Next.js', 'Riot.js', 'Svelte', 'Blitz.js']}
-                visibleFrom="xs"
+                hiddenFrom='sm'
               />
             </Group>
             <Group>
@@ -47,13 +49,19 @@ export function HeaderSearch() {
                 placeholder="Search"
                 leftSection={<IconSearch size={16} stroke={1.5} />}
                 data={['React', 'Angular', 'Vue', 'Next.js', 'Riot.js', 'Svelte', 'Blitz.js']}
-                visibleFrom="md"
+                visibleFrom="sm"
               />
               <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
             </Group>
           </div>
         </header>
+        <Collapse in={opened} hiddenFrom="sm">
+          <nav className={classes.mobileNav}>
+            {items}
+          </nav>
+        </Collapse>
       </Container>
     </section>
   );
 }
+
