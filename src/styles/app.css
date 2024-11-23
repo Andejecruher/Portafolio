@@ -64,6 +64,7 @@ textarea {
   flex-direction: column;
   align-items: flex-start;
   align-self: stretch;
+  height: 100%;
 }
 
 .card-title {
@@ -91,12 +92,6 @@ textarea {
   padding: 16px;
 }
 
-.card-content {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
 .card-buttons {
   margin-top: auto;
 }
@@ -112,4 +107,25 @@ textarea {
 #projects {
   margin-top: 68px;
   margin-bottom: 100px;
+}
+
+.card-title-post {
+  color: light-dark(#000, var(--mantine-color-white));
+  font-family: 'Fira Code';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.card-text-post {
+  color: light-dark(#000, var(--mantine-color-white));
+  font-family: 'Fira Code';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: left;
 }

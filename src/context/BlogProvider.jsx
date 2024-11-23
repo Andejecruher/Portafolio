@@ -183,6 +183,10 @@ export const BlogProvider = ({ children }) => {
 
   useEffect(() => {
     setTag(null);
+    if (search === '') {
+      setCategory('Todas');
+      fetchArticles('');
+    }
     if (search) {
       const query = `?search=${search}`;
       fetchArticles(query);

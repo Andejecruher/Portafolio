@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IconSearch } from '@tabler/icons-react';
+import { IconSearch, IconClearAll } from '@tabler/icons-react';
 import { Autocomplete, Burger, Group, Container, Collapse, ActionIcon, Skeleton } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useBlog } from '@src/context/useBlog';
@@ -36,6 +36,11 @@ export function HeaderSearch() {
   const [opened, { toggle }] = useDisclosure(false);
   const [selected, setSelected] = useState('Todas');
   const [searchValue, setSearchValue] = useState('');
+
+  const handleClearSearch = () => {
+    setSearch('');
+    setSearchValue('');
+  };
 
   const handleSearch = () => {
     if (searchValue.trim() !== '') {
@@ -82,7 +87,7 @@ export function HeaderSearch() {
         <header className={classes.header}>
           <div className={classes.inner}>
             <Group>
-              <Group ml={50} gap={5} className={classes.links} visibleFrom="md">
+              <Group ml={10} gap={5} className={classes.links} visibleFrom="md">
                 <a
                   key={0}
                   className={classes.link + (selected === 'Todas' ? ` ${classes.active}` : '')}
@@ -101,6 +106,9 @@ export function HeaderSearch() {
                 leftSection={<ActionIcon onClick={handleSearch}>
                   <IconSearch size={16} stroke={1.5} />
                 </ActionIcon>}
+                rightSection={<ActionIcon onClick={handleClearSearch}>
+                  <IconClearAll size={16} stroke={1.5} />
+                </ActionIcon>}
                 data={['React', 'Angular', 'Vue', 'Next.js', 'Riot.js', 'Svelte', 'Blitz.js']}
                 hiddenFrom='md'
                 value={searchValue}
@@ -114,6 +122,9 @@ export function HeaderSearch() {
                 placeholder="Search"
                 leftSection={<ActionIcon onClick={handleSearch}>
                   <IconSearch size={16} stroke={1.5} />
+                </ActionIcon>}
+                rightSection={<ActionIcon onClick={handleClearSearch}>
+                  <IconClearAll size={16} stroke={1.5} />
                 </ActionIcon>}
                 data={['React', 'Angular', 'Vue', 'Next.js', 'Riot.js', 'Svelte', 'Blitz.js']}
                 visibleFrom="md"
