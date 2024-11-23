@@ -1,10 +1,14 @@
 import { Image, Container, Title, Button, Group, Text, List, rem, ThemeIcon, Skeleton } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
+import { useNavigate } from 'react-router-dom';
+import { useBlog } from '@src/context/useBlog';
 import PropTypes from 'prop-types';
 
 import classes from './HeroBullets.module.css';
 
 export function HeroBullets({ article }) {
+  const { setArticle } = useBlog();
+  const navigate = useNavigate();
 
   const tags = article && article.tags.map((tag) => (
     <List.Item key={tag.id}>
@@ -12,6 +16,11 @@ export function HeroBullets({ article }) {
     </List.Item>
   ));
 
+  const handleGetArticle = (article) => {
+    setArticle(article);
+    const slug = article.title.toLowerCase().replace(/ /g, '-');
+    navigate(`/blog/${slug}`);
+  }
 
   return (
     <section id="hero-bullets">
@@ -21,7 +30,7 @@ export function HeroBullets({ article }) {
             <Title className={classes.title}>
               {article.title}
             </Title>
-            <Text mt="md">
+            <Text mt="md" className={classes.description}>
               {article.description}
             </Text>
 
@@ -44,12 +53,13 @@ export function HeroBullets({ article }) {
                 color="initial"
                 variant="outline"
                 className={classes.button}
+                onClick={() => handleGetArticle(article)}
               >
                 {`Leer más -->`}
               </Button>
             </Group>
           </div>
-          <Image src={article.featured_image} className={`sm:w-[60%] ${classes.image}`} />
+          <Image src={article.thumbnail} className={`sm:w-[60%] ${classes.image}`} />
         </div>
       </Container>
     </section>

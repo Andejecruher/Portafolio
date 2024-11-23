@@ -27,6 +27,13 @@
   }
 }
 
+.description {
+  color: light-dark(#000, var(--mantine-color-black));
+  font-size: 16px;
+  margin-top: var(--mantine-spacing-sm);
+  margin-bottom: var(--mantine-spacing-md);
+}
+
 .control {
   @media (max-width: $mantine-breakpoint-xs) {
     flex: 1;
@@ -62,6 +69,7 @@
 }
 
 .list li {
+  color: light-dark(#000, var(--mantine-color-black));
   font-size: 14px;
   margin-top: 0 !important;
   margin-bottom: 0; /* Asegúrate de que no haya margen inferior */

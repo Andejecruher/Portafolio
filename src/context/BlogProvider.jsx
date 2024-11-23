@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
   getArticles,
@@ -40,8 +40,6 @@ export const BlogProvider = ({ children }) => {
   const [category, setCategory] = useState(null);
   const [tag, setTag] = useState(null);
   const [search, setSearch] = useState('');
-  const [page, setPage] = useState(1);
-  const [pageComments, setPageComments] = useState(1);
 
   // Actualiza el estado de carga por solicitud
   const updateLoadingStatus = useCallback((key, status) => {
@@ -85,10 +83,10 @@ export const BlogProvider = ({ children }) => {
   }, [updateLoadingStatus, updateErrorStatus]);
 
   // Función para obtener un artículo por ID
-  const fetchArticleById = useCallback(async (id) => {
+  const fetchArticleById = useCallback(async (query) => {
     try {
       updateLoadingStatus('article', true);
-      const response = await getArticleById(id);
+      const response = await getArticleById(query);
       if (response && response.data) setArticle(response.data);
     } catch (err) {
       updateErrorStatus('article', 'Error fetching article');
@@ -157,41 +155,13 @@ export const BlogProvider = ({ children }) => {
 
   // Fetch inicial de todos los datos
   const fetchAllData = useCallback(async () => {
-    await Promise.all([fetchLatestPosts(), fetchArticles(), fetchCategories(), fetchTags()]);
-  }, [fetchLatestPosts, fetchArticles, fetchCategories, fetchTags]);
-
-  // Efectos
-  useEffect(() => {
-    setTag(null);
-    setSearch('');
-    if (category === 'all') {
-      fetchArticles('');
-    } else if (category && category !== 'all' && category !== 'Todas') {
-      const query = `?category=${category.id}`;
-      fetchArticles(query);
-    }
-  }, [category, fetchArticles]);
-
-  useEffect(() => {
-    setSearch('');
-    setCategory('Todas');
-    if (tag) {
-      const query = `?tag=${tag.id}`;
-      fetchArticles(query);
-    }
-  }, [tag, fetchArticles]);
-
-  useEffect(() => {
-    setTag(null);
-    if (search === '') {
-      setCategory('Todas');
-      fetchArticles('');
-    }
-    if (search) {
-      const query = `?search=${search}`;
-      fetchArticles(query);
-    }
-  }, [search, fetchArticles]);
+    const promises = [];
+    if (!articles.length) promises.push(fetchArticles());
+    if (!categories.length) promises.push(fetchCategories());
+    if (!tags.length) promises.push(fetchTags());
+    if (!latestPosts.length) promises.push(fetchLatestPosts());
+    await Promise.all(promises);
+  }, [fetchLatestPosts, fetchArticles, fetchCategories, fetchTags, articles, categories, tags, latestPosts]);
 
   return (
     <BlogContext.Provider
@@ -206,15 +176,11 @@ export const BlogProvider = ({ children }) => {
         article,
         tag,
         category,
-        page,
         search,
-        pageComments,
         setArticle,
         setTag,
         setCategory,
         setSearch,
-        setPage,
-        setPageComments,
         fetchArticleById,
         fetchAllData,
         fetchArticles,

@@ -31,20 +31,25 @@ const HeaderSearchSkeleton = () => {
 
 
 export function HeaderSearch() {
-  const { categories, setCategory, setSearch, loadingStatus } = useBlog();
+  const { categories, setSearch, setTag, setCategory, loadingStatus, fetchArticles } = useBlog();
   const { categories: isLoading } = loadingStatus;
   const [opened, { toggle }] = useDisclosure(false);
   const [selected, setSelected] = useState('Todas');
   const [searchValue, setSearchValue] = useState('');
 
   const handleClearSearch = () => {
+    setCategory('');
+    setTag('');
     setSearch('');
     setSearchValue('');
+    fetchArticles('');
   };
 
   const handleSearch = () => {
     if (searchValue.trim() !== '') {
       setSearch(searchValue);
+      const query = `?search=${searchValue}`;
+      fetchArticles(query);
     }
   };
 
@@ -56,11 +61,14 @@ export function HeaderSearch() {
 
   const handleCategory = (category) => {
     if (category === 'all') {
+      setCategory('');
       setSelected('Todas');
-      setCategory('all');
-    } else {
+      fetchArticles('');
+    } else if (category && category !== 'all' && category !== 'Todas') {
       setSelected(category.name);
-      setCategory(category);
+      setCategory(category.name);
+      const query = `?category=${category.id}`;
+      fetchArticles(query);
     }
     toggle();
   };

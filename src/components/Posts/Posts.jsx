@@ -1,15 +1,68 @@
-import { Grid, Container, SimpleGrid, Button, Text, Card, Image, Group, Badge } from '@mantine/core';
+import { Grid, Container, SimpleGrid, Button, Text, Card, Image, Group, Badge, Pagination, Skeleton, Divider } from '@mantine/core';
 import { TagsList } from '@src/components/TagsList/TagsList';
 import { useBlog } from '@src/context/useBlog';
+import { useNavigate } from 'react-router-dom';
 
 import classes from './Posts.module.css';
 
+export function PostsSkeleton() {
+  return (
+    <section id='posts' className={classes.posts}>
+      <Container size='md'>
+        <Grid>
+          <Grid.Col span={{ base: 12, md: 8 }}>
+            <SimpleGrid cols={{ base: 1, sm: 2, md: 2 }} >
+              {[1, 2, 3, 4].map((index) => (
+                <Card withBorder className="card-content" key={index}>
+                  <Card.Section className="card-image-section">
+                    <Skeleton height={180} />
+                  </Card.Section>
+                  <Group justify="flex-start" className="card-tecnology">
+                    <Skeleton height={20} width={60} />
+                    <Skeleton height={20} width={60} />
+                    <Skeleton height={20} width={60} />
+                  </Group>
+                  <div className="card-content">
+                    <Skeleton height={30} width="80%" mb="sm" />
+                    <Skeleton height={20} width="90%" mb="sm" />
+                    <Skeleton height={20} width="90%" mb="sm" />
+                  </div>
+                  <SimpleGrid cols={2} className='card-buttons'>
+                    <Skeleton height={36} width="100%" />
+                  </SimpleGrid>
+                </Card>
+              ))}
+            </SimpleGrid>
+            <Group mt={30} mb={30} align="center" justify='center'>
+              <Skeleton height={8} mt={6} mb={10} />
+            </Group>
+          </Grid.Col>
+          <Grid.Col span={{ base: 12, md: 4 }}>
+            <Card shadow="sm" withBorder style={{ padding: '20px' }}>
+              <Skeleton height={8} mb='md' />
+              <Divider mb="sm" style={{ marginBottom: '16px', borderColor: '#ddd' }} />
+              <Group spacing="xs" wrap="wrap" style={{ justifyContent: 'center' }}>
+                <Skeleton height={8} />
+                <Skeleton height={8} mt={6} />
+                <Skeleton height={8} mt={6} />
+              </Group>
+            </Card>
+          </Grid.Col>
+        </Grid>
+      </Container>
+    </section>
+  );
+}
+
+
 export function Posts() {
-  const { articles, tags, loadingStatus, setTag, search } = useBlog();
+  const { articles, tags, search, tag, category, pagination, loadingStatus, setTag, setSearch, setArticle, setCategory, fetchArticles } = useBlog();
   const { articles: articlesLoading } = loadingStatus;
+  const { total_pages, current_page } = pagination;
+  const navigate = useNavigate();
 
   if (articlesLoading) {
-    return <div>Loading...</div>;
+    return <PostsSkeleton />;
   }
 
   const renderPosts = () => {
@@ -18,7 +71,7 @@ export function Posts() {
         {article.thumbnail && (
           <Card.Section className="card-image-section">
             <Image
-              src={article.thumbnail}
+              src={article.featured_image}
               alt={article.title}
               className="card-image-post"
             />
@@ -45,7 +98,7 @@ export function Posts() {
         </div>
         <SimpleGrid cols={2} className='card-buttons'>
           <Button color="initial" variant="outline" fullWidth
-            onClick={() => window.open(article.id, '_blank')}
+            onClick={() => handleGetArticle(article)}
           >
             {`ver más -->`}
           </Button>
@@ -54,9 +107,36 @@ export function Posts() {
     ));
   }
 
-  const handleTag = (tag) => {
-    setTag(tag);
+  const handleGetArticle = (article) => {
+    setArticle(article);
+    const slug = article.title.toLowerCase().replace(/ /g, '-');
+    navigate(`/blog/${slug}`);
   }
+
+  const handleTag = (tag) => {
+    setSearch('');
+    setCategory('Todas');
+    setTag(tag);
+    if (tag) {
+      const query = `?tag=${tag.id}`;
+      fetchArticles(query);
+    }
+  }
+
+  const handlePageChange = (page) => {
+    if (page === current_page) return;
+    let query = `?page=${page}`;
+    if (category && category !== 'Todas') {
+      query = `?category=${category.id}&page=${page}`;
+    }
+    if (tag) {
+      query += `&tag=${tag.id}`;
+    }
+    if (search) {
+      query += `&search=${search}`;
+    }
+    fetchArticles(query);
+  };
 
   return (
     <section id='posts' className={classes.posts}>
@@ -69,10 +149,33 @@ export function Posts() {
               </Text>
             </Grid.Col>
           )}
+
+          {category && category !== 'Todas' && (
+            <Grid.Col span={12}>
+              <Text align="left" style={{ marginBottom: 20 }}>
+                Categoría: {category}
+              </Text>
+            </Grid.Col>
+          )}
+
+          {tag && (
+            <Grid.Col span={12}>
+              <Text align="left" style={{ marginBottom: 20 }}>
+                Tag: {tag.name}
+              </Text>
+            </Grid.Col>
+          )}
           <Grid.Col span={{ base: 12, md: 8 }}>
             <SimpleGrid cols={{ base: 1, sm: 2, md: 2 }} spacing="xs" verticalSpacing="xs">
               {renderPosts()}
             </SimpleGrid>
+            <Group mt={30} align="center" justify='center'>
+              <Pagination
+                total={total_pages}
+                value={current_page}
+                onChange={handlePageChange}
+              />
+            </Group>
           </Grid.Col>
           <Grid.Col span={{ base: 12, md: 4 }}>
             <TagsList tags={tags} handleTag={handleTag} />
@@ -82,3 +185,4 @@ export function Posts() {
     </section>
   );
 }
+

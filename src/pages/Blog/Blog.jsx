@@ -18,7 +18,6 @@ const BlogPage = () => {
       <Lastest />
       <HeaderSearch />
       <Posts />
-
     </section>
   );
 };

@@ -1,7 +1,8 @@
-.posts {
-}
-
 .sidebar {
   border: 1px solid #ccc;
   padding: 10px;
+}
+
+.posts {
+  margin-bottom: 50px;
 }
