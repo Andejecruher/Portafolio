@@ -106,7 +106,7 @@ export function HeaderMenu() {
                 {items}
               </Group>
             </nav>
-            <Burger className={classes.burguer} opened={opened} onClick={open} size="sm" hiddenFrom="sm" aria-label="Open menu" />
+            <Burger opened={opened} onClick={open} size="sm" hiddenFrom="sm" aria-label="Open menu" className={classes.burger} />
             <Drawer opened={opened} onClose={close} title={
               <Group align="center" justify="space-between" style={{ padding: '0 16px' }}>
                 <div className={classes.spacer}>

@@ -5,6 +5,8 @@ import { useForm } from '@mantine/form';
 import { useBlog } from '@src/context/useBlog';
 import { notifications } from '@mantine/notifications';
 
+import classes from './FormComments.module.css';
+
 export function FormComments() {
   const [loading, setLoading] = useState(false);
   const form = useForm({
@@ -50,26 +52,30 @@ export function FormComments() {
         <Title
           order={2}
           size="h1"
-          style={{ fontFamily: 'Greycliff CF, var(--mantine-font-family)' }}
           fw={900}
           ta="center"
+          className={classes.title}
         >
           Deja tu comentario
         </Title>
 
-        <SimpleGrid cols={{ base: 1, sm: 2 }} mt="xl">
+        <SimpleGrid cols={{ base: 1, sm: 2 }} mt="md">
           <TextInput
             label="Nombre"
             placeholder="escribe tu nombre"
             name="name"
             variant="filled"
-            {...form.getInputProps('name')} />
+            {...form.getInputProps('name')}
+            className={classes.input}
+          />
           <TextInput
             label="Correo electronico"
             placeholder="example@gmail.com"
             name="email"
             variant="filled"
-            {...form.getInputProps('email')} />
+            {...form.getInputProps('email')}
+            className={classes.input}
+          />
         </SimpleGrid>
 
         <Textarea
@@ -81,7 +87,9 @@ export function FormComments() {
           autosize
           name="comment"
           variant="filled"
-          {...form.getInputProps('comment')} />
+          {...form.getInputProps('comment')}
+          className={classes.input}
+        />
 
         <Group justify="center" mt="xl">
           <Button type="submit" size="md" disabled={loading}>

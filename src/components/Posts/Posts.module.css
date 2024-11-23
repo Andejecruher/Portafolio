@@ -6,3 +6,9 @@
 .posts {
   margin-bottom: 50px;
 }
+
+.result {
+  font-size: 16px;
+  color: light-dark(#000, var(--mantine-color-black));
+  margin-bottom: 25px;
+}

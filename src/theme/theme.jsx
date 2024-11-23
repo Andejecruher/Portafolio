@@ -1,4 +1,4 @@
-import { createTheme, rem } from '@mantine/core';
+import { Burger, createTheme, rem } from '@mantine/core';
 
 const theme = createTheme({
   baseHue: 230,
@@ -128,7 +128,7 @@ const theme = createTheme({
       "#bd2432",
       "#aa1d2b",
       "#951123"
-    ],
+    ]
   },
   primaryShade: { light: 6, dark: 8 },
   primaryColor: "purple",
@@ -224,7 +224,30 @@ const theme = createTheme({
           paddingLeft: '0px',
         },
       }),
-    }
+    },
+    TextInput: {
+      styles: (theme) => ({
+        root: {
+          color: 'light-dark(#000, var(--mantine-color-white))',
+          fontFamily: 'Fira Code',
+        },
+      }),
+    },
+    Burger: {
+      defaultProps: {
+        color: 'light-dark(#000, var(--mantine-color-white))',
+        fontFamily: 'Fira Code',
+      },
+      styles: (theme) => ({
+        root: {
+          color: 'light-dark(#000, var(--mantine-color-white))',
+          fontFamily: 'Fira Code',
+          '&:hover': {
+            backgroundColor: theme.colorScheme === 'dark' ? 'transparent' : theme.colors.gray,
+          },
+        }
+      }),
+    },
   },
 });
 

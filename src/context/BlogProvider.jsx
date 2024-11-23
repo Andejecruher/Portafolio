@@ -5,7 +5,7 @@ import {
   getCategories,
   getTags,
   getLatestPosts,
-  getArticleById,
+  getArticleByTitle,
   createComment,
   registerNewsletter,
 } from '@src/services/blogService';
@@ -83,10 +83,10 @@ export const BlogProvider = ({ children }) => {
   }, [updateLoadingStatus, updateErrorStatus]);
 
   // Función para obtener un artículo por ID
-  const fetchArticleById = useCallback(async (query) => {
+  const fetchArticleByTitle = useCallback(async (query) => {
     try {
       updateLoadingStatus('article', true);
-      const response = await getArticleById(query);
+      const response = await getArticleByTitle(query);
       if (response && response.data) setArticle(response.data);
     } catch (err) {
       updateErrorStatus('article', 'Error fetching article');
@@ -156,12 +156,12 @@ export const BlogProvider = ({ children }) => {
   // Fetch inicial de todos los datos
   const fetchAllData = useCallback(async () => {
     const promises = [];
-    if (!articles.length) promises.push(fetchArticles());
+    promises.push(fetchArticles());
+    promises.push(fetchLatestPosts());
     if (!categories.length) promises.push(fetchCategories());
     if (!tags.length) promises.push(fetchTags());
-    if (!latestPosts.length) promises.push(fetchLatestPosts());
     await Promise.all(promises);
-  }, [fetchLatestPosts, fetchArticles, fetchCategories, fetchTags, articles, categories, tags, latestPosts]);
+  }, [fetchLatestPosts, fetchArticles, fetchCategories, fetchTags, categories, tags]);
 
   return (
     <BlogContext.Provider
@@ -181,7 +181,7 @@ export const BlogProvider = ({ children }) => {
         setTag,
         setCategory,
         setSearch,
-        fetchArticleById,
+        fetchArticleByTitle,
         fetchAllData,
         fetchArticles,
         fetchCreateComment,

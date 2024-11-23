@@ -1,5 +1,5 @@
 .headerSearch {
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 
 .header {
@@ -26,7 +26,7 @@
   padding: 8px 12px;
   border-radius: var(--mantine-radius-sm);
   text-decoration: none;
-  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
+  color: light-dark(#000, var(--mantine-color-dark-0));
   font-size: var(--mantine-font-size-md);
   font-weight: 500;
   cursor: pointer;
@@ -43,7 +43,7 @@
     var(--mantine-color-gray-0),
     var(--mantine-color-dark-6)
   );
-  color: light-dark(var(--mantine-color-black-5), var(--mantine-color-white));
+  color: light-dark(#000, var(--mantine-color-white));
 }
 
 .menuContainer {
@@ -64,4 +64,13 @@
   font-size: 16px;
   color: light-dark(#000, var(--mantine-color-white));
   text-decoration: none;
+}
+
+.burguer {
+  color: light-dark(#000, var(--mantine-color-white)) !important;
+}
+
+.burguer:hover {
+  color: light-dark(#000, var(--mantine-color-white)) !important;
+  background-color: transparent !important;
 }

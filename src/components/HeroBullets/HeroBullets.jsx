@@ -18,7 +18,7 @@ export function HeroBullets({ article }) {
 
   const handleGetArticle = (article) => {
     setArticle(article);
-    const slug = article.title.toLowerCase().replace(/ /g, '-');
+    const slug = article.slug;
     navigate(`/blog/${slug}`);
   }
 
@@ -98,10 +98,10 @@ export function HeroBulletsSkeleton() {
             </List>
 
             <Group mt={30}>
-              <Skeleton height={36} width={120} />
+              <Skeleton height={36} width={500} />
             </Group>
           </div>
-          <Skeleton height={356} width="60%" className={classes.image} />
+          <Skeleton height={356} width="100%" mb={10} />
         </div>
       </Container>
     </section>

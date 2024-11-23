@@ -12,9 +12,9 @@ export const getArticles = async (query = '') => {
   }
 };
 // Llama a la API para obtener un articulo por su ID
-export const getArticleById = async (id) => {
+export const getArticleByTitle = async (title) => {
   try {
-    const response = await axiosInstance.get(`/articles/${id}`);
+    const response = await axiosInstance.get(`/articles/${title}`);
     return response.data;
   } catch (error) {
     return error;

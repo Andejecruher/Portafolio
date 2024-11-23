@@ -46,8 +46,9 @@
   flex: inherit !important;
 
   @media (max-width: $mantine-breakpoint-md) {
-    width: 100%;
-    height: auto;
+    width: rem(376px);
+    height: rem(356px);
+    margin: auto;
     margin-bottom: var(--mantine-spacing-md);
   }
 }

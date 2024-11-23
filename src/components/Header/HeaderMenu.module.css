@@ -122,6 +122,8 @@ a > .almohadilla {
   width: 30px;
   height: 30px;
 }
-.burguer:hover {
-  background-color: rgba(199, 120, 221, 0.5) !important;
+
+.burger:hover {
+  color: light-dark(#000, var(--mantine-color-white)) !important;
+  background-color: transparent !important;
 }

@@ -109,7 +109,7 @@ export function Posts() {
 
   const handleGetArticle = (article) => {
     setArticle(article);
-    const slug = article.title.toLowerCase().replace(/ /g, '-');
+    const slug = article.slug;
     navigate(`/blog/${slug}`);
   }
 
@@ -144,7 +144,7 @@ export function Posts() {
         <Grid>
           {search && (
             <Grid.Col span={12}>
-              <Text align="left" style={{ marginBottom: 20 }}>
+              <Text align="left" className={classes.result}>
                 Resultados de la búsqueda: {search}
               </Text>
             </Grid.Col>
@@ -152,7 +152,7 @@ export function Posts() {
 
           {category && category !== 'Todas' && (
             <Grid.Col span={12}>
-              <Text align="left" style={{ marginBottom: 20 }}>
+              <Text align="left" className={classes.result}>
                 Categoría: {category}
               </Text>
             </Grid.Col>
@@ -160,7 +160,7 @@ export function Posts() {
 
           {tag && (
             <Grid.Col span={12}>
-              <Text align="left" style={{ marginBottom: 20 }}>
+              <Text align="left" className={classes.result}>
                 Tag: {tag.name}
               </Text>
             </Grid.Col>

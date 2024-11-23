@@ -61,10 +61,12 @@ export function HeaderSearch() {
 
   const handleCategory = (category) => {
     if (category === 'all') {
+      setTag('');
       setCategory('');
       setSelected('Todas');
       fetchArticles('');
     } else if (category && category !== 'all' && category !== 'Todas') {
+      setTag('');
       setSelected(category.name);
       setCategory(category.name);
       const query = `?category=${category.id}`;
@@ -140,7 +142,7 @@ export function HeaderSearch() {
                 onChange={setSearchValue}
                 onKeyDown={handleKeyDown}
               />
-              <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="md" />
+              <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="md" className={classes.burguer} />
             </Group>
           </div>
         </header>

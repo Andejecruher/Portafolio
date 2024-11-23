@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useBlog } from '@src/context/useBlog';
 import {
   Title,
@@ -11,21 +13,56 @@ import {
   Paper,
   Stack,
   Container,
+  Skeleton,
 } from '@mantine/core';
 import { FormComments } from '@src/components/FormComments/FormComments';
 
 import classes from './SinglePost.module.css';
 
 export function SinglePost() {
-  const { article, fetchArticleById } = useBlog();
+  const { article, fetchArticleByTitle } = useBlog();
+  const { title: urlTitle } = useParams();
+
+  useEffect(() => {
+    if (!article) {
+      fetchArticleByTitle(urlTitle);
+    }
+  }, [article, fetchArticleByTitle, urlTitle]);
+
+  if (!article) {
+    return (
+      <section id="single-post" className={classes.single_post}>
+        <Container size="md">
+          <Paper shadow="sm" p="md" radius="md" withBorder>
+            <Skeleton height={40} mb="sm" />
+            <Skeleton height={20} width="70%" mb="lg" />
+            <Skeleton height={400} mb="lg" />
+            <Skeleton height={20} width="50%" mb="xs" />
+            <Skeleton height={20} width="30%" mb="md" />
+            <Skeleton height={20} width="40%" mb="md" />
+            <Skeleton height={20} width="100%" mb="lg" />
+            <Skeleton height={20} width="100%" mb="lg" />
+            <Skeleton height={20} width="100%" mb="lg" />
+            <Skeleton height={20} width="100%" mb="lg" />
+            <Skeleton height={20} width="100%" mb="lg" />
+            <Skeleton height={20} width="100%" mb="lg" />
+            <Skeleton height={20} width="100%" mb="lg" />
+            <Skeleton height={20} width="100%" mb="lg" />
+          </Paper>
+        </Container>
+      </section>
+    );
+  }
+
   const { title, description, content, featured_image, publication_date, category, user, comments, tags } = article;
   const { current_page, last_page: total_pages } = comments;
-  console.log(comments);
 
   const handlePageChange = (pageSelect) => {
-    let query = `${article.id}?page=${pageSelect}`;
-    fetchArticleById(query);
+    let query = `${article.title}?page=${pageSelect}`;
+    fetchArticleByTitle(query);
   };
+
+
 
   return (
     <section id="single-post" className={classes.single_post}>
@@ -84,9 +121,9 @@ export function SinglePost() {
               <Stack spacing="sm">
                 {comments.data.map((comment, index) => (
                   <Paper key={index} p="md" shadow="xs" radius="sm" withBorder>
-                    <Text weight={500}>{comment.author_name}</Text>
-                    <Text size="xs">{new Date(comment.published_at).toLocaleDateString()}</Text>
-                    <Text mt="sm">{comment.content}</Text>
+                    <Text weight={500} className={classes.author}>{comment.author_name}</Text>
+                    <Text size="xs" className={classes.date}>{new Date(comment.published_at).toLocaleDateString()}</Text>
+                    <Text mt="sm" className={classes.comment}>{comment.content}</Text>
                   </Paper>
                 ))}
               </Stack>
