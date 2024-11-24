@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.andejecruher.com/</loc>
-    <lastmod>2024-11-14</lastmod>
+    <loc>https://www.tusitio.com/home</loc>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.andejecruher.com/about</loc>
-    <lastmod>2024-11-14</lastmod>
+    <loc>https://www.tusitio.com/about</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.andejecruher.com/blog</loc>
-    <lastmod>2024-11-14</lastmod>
+    <loc>https://www.tusitio.com/projects</loc>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.tusitio.com/contact</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.tusitio.com/blog</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.tusitio.com/blog/:title</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.tusitio.com/404</loc>
+    <priority>0.5</priority>
   </url>
 </urlset>
