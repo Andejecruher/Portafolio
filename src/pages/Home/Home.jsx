@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Hero } from '@src/components/Hero/Hero';
 import { Phrase } from '@src/components/Phrase/Phrase';
 import { Projects } from '@src/components/Projects/Projects';
@@ -5,12 +6,27 @@ import { Skills } from '@src/components/Skills/Skills';
 import { AboutMe } from '@src/components/AboutMe/AboutMe';
 import { Contact } from '@src/components/Contact/Contact';
 import { EmailBanner } from '@src/components/EmailBanner/EmailBanner';
-import { Loader } from '@src/components/Loader/Loader';
+import { PageLoader } from '@src/pages/PageLoader';
+import { useLoading } from '@src/context/useLoading';
 import andejecruher from '@src/assets/projects/andejecruher.png';
 import volveravivir from '@src/assets/projects/volveravivir.png';
 import invitaciones from '@src/assets/projects/invitaciones.png';
 
 const HomePage = () => {
+
+  const { loading, setLoading } = useLoading();
+
+  useEffect(() => {
+    setLoading(true);
+    // Simula una llamada a la API
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, [setLoading]);
+
+  if (loading) {
+    return <PageLoader />;
+  }
 
   const projects = [
     {
