@@ -6,7 +6,7 @@ export function Loader() {
   return (
     <Center style={{ minHeight: '100vh', flexDirection: 'column' }}>
       {/* Imagen del Loader */}
-      <Image src={ajh} alt="Cargando..." width={'32px'} height={'32px'} mb="md" style={
+      <Image src={ajh} alt="Andejecruher" mb="md" style={
         {
           width: '200px',
           height: '200px',
@@ -15,7 +15,7 @@ export function Loader() {
 
       {/* Dots en movimiento (Loader de Mantine) */}
       <Box>
-        <MantineLoader type="dots" color={theme.colorScheme === 'dark' ? 'gray' : 'blue'} size="xl" />
+        <MantineLoader type="dots" color={theme.colorScheme === 'dark' ? 'gray' : 'white'} size="xl" />
       </Box>
     </Center>
   );
