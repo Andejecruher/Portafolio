@@ -14,6 +14,7 @@ import {
   Stack,
   Container,
   Skeleton,
+  TypographyStylesProvider,
 } from '@mantine/core';
 import { FormComments } from '@src/components/FormComments/FormComments';
 
@@ -112,8 +113,9 @@ export function SinglePost() {
 
           {/* Article Content */}
           <Divider mb="lg" />
-          <Box className={classes.dangerousHtml} dangerouslySetInnerHTML={{ __html: content }} mb="lg" />
-
+          <TypographyStylesProvider>
+            <Box className={classes.dangerousHtml} dangerouslySetInnerHTML={{ __html: content }} mb="lg" />
+          </TypographyStylesProvider>
           {/* Comments Section */}
           <Box mt="lg">
             <Title order={2} size="h2" mb="sm" className={classes.text}>Comentarios</Title>
