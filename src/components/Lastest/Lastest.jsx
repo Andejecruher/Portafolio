@@ -15,12 +15,14 @@ export function Lastest() {
   if (error) return <p>Error: {error}</p>;
 
   const slides = latestPosts && latestPosts.map((article) => (
-    <HeroBullets key={article.id} article={article} />
+    <Carousel.Slide key={article.id}>
+      <HeroBullets article={article} />
+    </Carousel.Slide>
   ));
 
   return (
     <section id="lastest">
-      <Container size="lg">
+      <Container size="md">
         <Carousel
           classNames={classes}
           slideGap="xs"

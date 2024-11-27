@@ -23,7 +23,7 @@ export function HeroBullets({ article }) {
   }
 
   return (
-    <section id="hero-bullets">
+    <section id="hero-bullets" className={classes.root}>
       <Container size="md">
         <div className={classes.inner}>
           <div className={classes.content}>
@@ -72,7 +72,7 @@ HeroBullets.propTypes = {
 
 export function HeroBulletsSkeleton() {
   return (
-    <section id="hero-bullets">
+    <section id="hero-bullets-skeleton">
       <Container size="md">
         <div className={classes.inner}>
           <div className={classes.content}>
