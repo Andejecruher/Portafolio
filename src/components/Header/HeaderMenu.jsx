@@ -53,6 +53,10 @@ export function HeaderMenu() {
   useEffect(() => {
     const currentPath = location.pathname;
     const currentLink = links.find(link => link.link === currentPath);
+
+    if (currentPath.includes('/blog/')) {
+      setSelected('Blog');
+    }
     if (currentLink) {
       setSelected(currentLink.label);
     }

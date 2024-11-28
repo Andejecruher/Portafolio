@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 import { useBlog } from '@src/context/useBlog';
 import {
   Title,
@@ -55,7 +56,7 @@ export function SinglePost() {
     );
   }
 
-  const { title, description, content, featured_image, publication_date, category, user, comments, tags } = article;
+  const { title, description, content, featured_image, publication_date, category, user, comments, tags, slug } = article;
   const { current_page, last_page: total_pages } = comments;
 
   const handlePageChange = (pageSelect) => {
@@ -66,90 +67,110 @@ export function SinglePost() {
 
 
   return (
-    <section id="single-post" className={classes.single_post}>
-      <Container size="md">
-        <Paper shadow="sm" p="md" radius="md" withBorder>
-          {/* Title & Description */}
-          <Title order={1} size="h1" mb="sm" className={classes.title}>{title}</Title>
-          <Text mb="lg" className={classes.description}>{description}</Text>
+    <>
+      <Helmet>
+        <meta property="og:title" content={title} />
+        <meta
+          property="og:description"
+          content={description}
+        />
+        <meta property="og:image" content={featured_image} />
+        <meta property="og:url" content={`https://www.andejecruher.com/blog/${slug}`} />
+        <meta property="og:type" content="article" />
+        <meta property="og:locale" content="es_ES" />
+        <meta property="og:site_name" content="Andejecruher/Blog" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={featured_image} />
+        <meta property="fb:app_id" content="546592754922069" />
+        <title>Andejecruher - {title}</title>
+      </Helmet>
+      <section id="single-post" className={classes.single_post}>
+        <Container size="md">
+          <Paper shadow="sm" p="md" radius="md" withBorder>
+            {/* Title & Description */}
+            <Title order={1} size="h1" mb="sm" className={classes.title}>{title}</Title>
+            <Text mb="lg" className={classes.description}>{description}</Text>
 
-          {/* Featured Image */}
-          {featured_image && (
-            <Image src={featured_image} alt="Featured" height={400} radius="md" mb="lg" className={classes.image} />
-          )}
-
-          {/* Publication Details */}
-          <Group position="apart" align="center" mb="md">
-            <Stack gap="xs">
-              <Text className={classes.text}>
-                <strong>Publicado por:</strong> {user.first_name} {user.last_name}
-              </Text>
-              <Text className={classes.text}>
-                <strong>Fecha:</strong> {new Date(publication_date).toLocaleDateString()}
-              </Text>
-              <Text className={classes.text}>
-                <strong>Categoría:</strong> {category.name}
-              </Text>
-            </Stack>
-          </Group>
-
-          {/* Tags Section */}
-          {tags && (
-            <Box mb="lg">
-              <Title order={3} size="h3" mb="xs" className={classes.text}>Tags</Title>
-              <Group spacing="xs">
-                {tags.map((tag, index) => (
-                  <Badge key={index} color="cyan" variant="filled" className={classes.tag} style={{
-                    backgroundColor: tag.color, color: tag.color === '#ffffff' ? '#000000' : '#ffffff',
-                    borderRadius: '0px',
-                    border: '1px solid #C778DD',
-                  }}>
-                    {tag.name}
-                  </Badge>
-                ))}
-              </Group>
-            </Box>
-          )}
-
-          {/* Article Content */}
-          <Divider mb="lg" />
-          <TypographyStylesProvider>
-            <Box className={classes.dangerousHtml} dangerouslySetInnerHTML={{ __html: content }} mb="lg" />
-          </TypographyStylesProvider>
-          {/* Comments Section */}
-          <Box mt="lg">
-            <Title order={2} size="h2" mb="sm" className={classes.text}>Comentarios</Title>
-            {comments.data.length > 0 ? (
-              <Stack spacing="sm">
-                {comments.data.map((comment, index) => (
-                  <Paper key={index} p="md" shadow="xs" radius="sm" withBorder>
-                    <Text weight={500} className={classes.author}>{comment.author_name}</Text>
-                    <Text size="xs" className={classes.date}>{new Date(comment.published_at).toLocaleDateString()}</Text>
-                    <Text mt="sm" className={classes.comment}>{comment.content}</Text>
-                  </Paper>
-                ))}
-              </Stack>
-            ) : (
-              <Text className={classes.description}>No hay comentarios aún.</Text>
+            {/* Featured Image */}
+            {featured_image && (
+              <Image src={featured_image} alt="Featured" height={400} radius="md" mb="lg" className={classes.image} />
             )}
-          </Box>
 
-          {/* Pagination */}
-          {comments && comments.data.length > 0 && (
-            <Group mt={30} align="center" justify='center'>
-              <Pagination
-                total={total_pages}
-                value={current_page}
-                onChange={handlePageChange}
-              />
+            {/* Publication Details */}
+            <Group position="apart" align="center" mb="md">
+              <Stack gap="xs">
+                <Text className={classes.text}>
+                  <strong>Publicado por:</strong> {user.first_name} {user.last_name}
+                </Text>
+                <Text className={classes.text}>
+                  <strong>Fecha:</strong> {new Date(publication_date).toLocaleDateString()}
+                </Text>
+                <Text className={classes.text}>
+                  <strong>Categoría:</strong> {category.name}
+                </Text>
+              </Stack>
             </Group>
-          )}
 
-          {/* Comments Form */}
-          <Divider mt="lg" mb="md" />
-          <FormComments />
-        </Paper>
-      </Container>
-    </section>
+            {/* Tags Section */}
+            {tags && (
+              <Box mb="lg">
+                <Title order={3} size="h3" mb="xs" className={classes.text}>Tags</Title>
+                <Group spacing="xs">
+                  {tags.map((tag, index) => (
+                    <Badge key={index} color="cyan" variant="filled" className={classes.tag} style={{
+                      backgroundColor: tag.color, color: tag.color === '#ffffff' ? '#000000' : '#ffffff',
+                      borderRadius: '0px',
+                      border: '1px solid #C778DD',
+                    }}>
+                      {tag.name}
+                    </Badge>
+                  ))}
+                </Group>
+              </Box>
+            )}
+
+            {/* Article Content */}
+            <Divider mb="lg" />
+            <TypographyStylesProvider>
+              <Box className={classes.dangerousHtml} dangerouslySetInnerHTML={{ __html: content }} mb="lg" />
+            </TypographyStylesProvider>
+            {/* Comments Section */}
+            <Box mt="lg">
+              <Title order={2} size="h2" mb="sm" className={classes.text}>Comentarios</Title>
+              {comments.data.length > 0 ? (
+                <Stack spacing="sm">
+                  {comments.data.map((comment, index) => (
+                    <Paper key={index} p="md" shadow="xs" radius="sm" withBorder>
+                      <Text weight={500} className={classes.author}>{comment.author_name}</Text>
+                      <Text size="xs" className={classes.date}>{new Date(comment.published_at).toLocaleDateString()}</Text>
+                      <Text mt="sm" className={classes.comment}>{comment.content}</Text>
+                    </Paper>
+                  ))}
+                </Stack>
+              ) : (
+                <Text className={classes.description}>No hay comentarios aún.</Text>
+              )}
+            </Box>
+
+            {/* Pagination */}
+            {comments && comments.data.length > 0 && (
+              <Group mt={30} align="center" justify='center'>
+                <Pagination
+                  total={total_pages}
+                  value={current_page}
+                  onChange={handlePageChange}
+                />
+              </Group>
+            )}
+
+            {/* Comments Form */}
+            <Divider mt="lg" mb="md" />
+            <FormComments />
+          </Paper>
+        </Container>
+      </section>
+    </>
   );
 };
