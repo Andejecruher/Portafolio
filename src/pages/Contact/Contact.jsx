@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Breadcrumbs } from "@src/components/Breadcrumbs/Breadcrumbs";
 import { GetInTouch } from "@src/components/ContactForm/GetInTouch";
 

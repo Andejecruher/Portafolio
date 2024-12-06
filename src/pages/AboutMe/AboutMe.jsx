@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Breadcrumbs } from "@src/components/Breadcrumbs/Breadcrumbs";
 import { AboutMe } from '@src/components/AboutMe/AboutMe';
 import { SkillsAboutMe } from "@src/components/Skills/SkillsAboutMe";

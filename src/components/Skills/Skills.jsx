@@ -7,7 +7,7 @@ import classes from './Skills.module.css';
 export function Skills() {
   const skills = [
     {
-      title: 'Languages',
+      title: 'Lenguages',
       skills: 'HTML CSS JAVASCRIPT PYTHON PHP C#'
     },
     {

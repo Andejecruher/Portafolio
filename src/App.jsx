@@ -9,6 +9,7 @@ import { Notifications } from '@mantine/notifications';
 import { RouterProvider } from "react-router-dom";
 import { BlogProvider } from '@src/context/BlogProvider';
 import { PageLoader } from './pages/PageLoader';
+import { HelmetProvider } from "react-helmet-async";
 import routes from "@src/router/router";
 import theme from "@src/theme/theme";
 import '@src/styles/app.css';
@@ -29,19 +30,21 @@ function App() {
     simulateLoading();
   }, []); // Solo se ejecuta al montar el componente
   return (
-    <BlogProvider>
-      <MantineProvider theme={theme} defaultColorScheme="dark" withGlobalStyles withNormalizeCSS>
-        <Notifications />
-        {isLoading ? (
-          <PageLoader />
-        ) : (
-          <RouterProvider future={{
-            v7_startTransition: true,
-          }} router={routes} />
-        )}
+    <HelmetProvider>
+      <BlogProvider>
+        <MantineProvider theme={theme} defaultColorScheme="dark" withGlobalStyles withNormalizeCSS>
+          <Notifications />
+          {isLoading ? (
+            <PageLoader />
+          ) : (
+            <RouterProvider future={{
+              v7_startTransition: true,
+            }} router={routes} />
+          )}
 
-      </MantineProvider>
-    </BlogProvider>
+        </MantineProvider>
+      </BlogProvider>
+    </HelmetProvider>
   );
 }
 
