@@ -21,13 +21,21 @@
   max-width: 40%;
   flex: 1;
 
+  @media (max-width: $mantine-breakpoint-md) {
+    max-width: 40%;
+  }
+
   @media (max-width: $mantine-breakpoint-sm) {
+    max-width: 60%;
+  }
+
+  @media (max-width: $mantine-breakpoint-xs) {
     max-width: 100%;
   }
 }
 
 .body {
-  padding-right: calc(var(--mantine-spacing-xl) * 4);
+  padding-right: calc(var(--mantine-spacing-md) * 4);
 
   @media (max-width: $mantine-breakpoint-sm) {
     padding-right: 0;
