@@ -135,6 +135,16 @@
   }
 }
 
+.link {
+  &:hover {
+    cursor: pointer;
+    color: #c778dd;
+    text-decoration: none;
+    text-shadow: 0 0 10px #c778dd;
+    font-weight: bold;
+  }
+}
+
 .dots {
   position: absolute;
   width: 84px;

@@ -38,7 +38,7 @@ export function Hero() {
             <div className={classes.actualities}>
               <span className={classes.cube} ></span>
               <div className={classes.actualitiesText}>
-                Actualmente trabajando en<span> Portafolio</span>
+                Actualmente trabajando en <a href='https://clupp.com.mx/' className={classes.link} target='_blank'>Clupp</a>
               </div>
             </div>
             <Image src={dots} className={classes.dots} />

@@ -1,4 +1,4 @@
-import { Burger, createTheme, rem } from '@mantine/core';
+import { createTheme, rem } from '@mantine/core';
 
 const theme = createTheme({
   baseHue: 230,
@@ -181,7 +181,7 @@ const theme = createTheme({
   },
   components: {
     Button: {
-      styles: (theme) => ({
+      styles: () => ({
         root: {
           backgroundColor: 'transparent',
           color: 'light-dark(#000, var(--mantine-color-white))',
@@ -213,7 +213,7 @@ const theme = createTheme({
       }),
     },
     Card: {
-      styles: (theme) => ({
+      styles: () => ({
         root: {
           backgroundColor: 'transparent',
           color: 'light-dark(#000, var(--mantine-color-white))',
@@ -226,7 +226,7 @@ const theme = createTheme({
       }),
     },
     TextInput: {
-      styles: (theme) => ({
+      styles: () => ({
         root: {
           color: 'light-dark(#000, var(--mantine-color-white))',
           fontFamily: 'Fira Code',
